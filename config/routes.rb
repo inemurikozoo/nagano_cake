@@ -1,51 +1,25 @@
 Rails.application.routes.draw do
 
   namespace :public do
-    get 'addresses/index'
-    get 'addresses/edit'
-  end
-  namespace :public do
-    get 'orders/new'
-    get 'orders/complete'
-    get 'orders/index'
-    get 'orders/show'
-  end
-  namespace :public do
+    resources :addresses, only: [:index, :edit]
+    resources :orders
     get 'cart_items/index'
-  end
-  namespace :public do
-    get 'customers/show'
-    get 'customers/quit'
-  end
-  namespace :public do
-    get 'items/index'
+    resources :customers, only: [:show, :quit]
+    get 'items' => 'public/items#index'
     get 'items/show'
-  end
-  namespace :public do
-    get 'homes/top'
+    root :to => 'homes#top'
     get 'homes/about'
   end
+  
   namespace :admin do
     get 'orders/show'
-  end
-  namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-  end
-  namespace :admin do
-    get 'genres/index'
-  end
-  namespace :admin do
-    get 'homes/top'
-  end
-#会員用のルーティング設定
-  get 'items' => 'public/items#index'
-#管理者用のルーティング設定
-namespace :admin do
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :genres,    only: [:index, :create, :edit, :update]
+    root :to => 'homes#top'
     get 'items' => 'admin/items#index'
-end
-
+    resources :items,     only:[:index, :new, :create, :show, :edit, :update]
+  end
+  
 #会員用
   devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -56,11 +30,6 @@ end
     devise_for :admin,skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
-
-
-  namespace :admin do
-    resources :items
-  end
-
-    # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  
+     # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
