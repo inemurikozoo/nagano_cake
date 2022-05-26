@@ -21,11 +21,11 @@ Rails.application.routes.draw do
 #管理者用ルーティング
 
   namespace :admin do
-    get 'status/:id' => 'admin/orders#show'
+    get 'status/:id' => 'orders#show'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres,    only: [:index, :create, :edit, :update]
     root :to => 'homes#top'
-    get 'items' => 'admin/items#index'
+    get 'items' => 'items#index'
     resources :items,     only:[:index, :new, :create, :show, :edit, :update]
   end
   
