@@ -2,17 +2,17 @@ Rails.application.routes.draw do
 
 
   # root :to => 'homes#top'
-  # get '/about' => 'public/homes#about'
+  get '/about' => 'public/homes#about'
   
-  # get 'items' => 'public/items#index'
+  get 'items' => 'public/items#index'
   # get 'items/show'
   
   # resources :customers, only: [:show, :quit]
   #   #会員用
-  # devise_for :customers, skip: [:passwords], controllers: {
-  #   registrations: "public/registrations",
-  #   sessions: 'public/sessions'
-  # }
+  devise_for :customers, skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+  }
   
   # resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
   # resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]

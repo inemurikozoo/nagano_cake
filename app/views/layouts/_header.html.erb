@@ -1,0 +1,54 @@
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <% if admin_signed_in? %>
+          <%= link_to "ながのCAKE", admin_root_path %>
+          <% else %>
+          <%= link_to "ながのCAKE", root_path %>
+          <% end %>
+
+
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarNavDropdown" style>
+          <ul class="navbar-nav ml-auto">
+
+              <!--会員ログイン時　-->
+              <% if customer_signed_in? %>
+
+              <li class="header-customer-name">
+                ようこそ、<%= customer.first_name %>さん
+              </li>
+              <li>
+                <%= link_to admin_items_path, class: 'nav-link text-light' do %><i class="fas fa-items"></i> 商品一覧<% end %><!--商品一覧-->
+              </li>
+              <li>
+                <%= link_to admin_customers_path, class: 'nav-link text-light' do %>会員一覧<% end%><!--会員の一覧-->
+              </li>
+              <li>
+                <%= link_to admin_root_path, class: 'nav-link text-light' do %>注文履歴一覧<% end %><!--注文履歴の一覧-->
+              </li>
+              <li>
+                <%= link_to admin_genres_path, class: 'nav-link text-light' do %>ジャンル一覧<% end %><!-- ジャンルの一覧　-->
+              </li>
+              <li>
+                <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-light'  do %>ログアウト<% end %>
+              </li>
+              <% else %>
+              <li>
+                <%= link_to about_path, class: 'nav-link text-light' do %>About<% end %>
+              </li>
+              <li>
+                <%= link_to items_path, class: 'nav-link text-light' do %>商品一覧<% end %>
+              </li>
+              <li>
+                <%= link_to new_customer_registration, class: 'nav-link text-light' do %>新規登録<% end %>
+              </li>
+              <li>
+                <%= link_to new_admin_session_path, class: 'nav-link text-light' do %>ログイン<% end %>
+            </li>
+          </ul>
+        <% end %>
+        </div>
+      </nav>
