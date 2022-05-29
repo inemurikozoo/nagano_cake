@@ -6,15 +6,15 @@ Rails.application.routes.draw do
   
   get 'items' => 'public/items#index'
   # get 'items/show'
-  
-  # resources :customers, only: [:show, :quit]
+  root :to => 'public/homes#top'
+  resources :customers, only: [:show, :quit]
   #   #会員用
   devise_for :customers, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
   
-  # resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
+  resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
   # resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
   # resources :addresses
   
