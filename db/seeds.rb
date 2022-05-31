@@ -26,25 +26,37 @@ Genre.create!(
   name: 'キャンディ',
 )
 
-Item.create!(
-  genre_id:0,
-  name: "いちごのショートケーキ（ホール）",
-  introduction: "栃木産のとちおとめを贅沢に使用しています。",
-  price: "2500",
-  is_active: true
-  )
+# Item.create!(
+#   genre_id: 0,
+#   name: "いちごのショートケーキ（ホール）",
+#   introduction: "栃木産のとちおとめを贅沢に使用しています。",
+#   price: "2500",
+#   is_active: true
+#   )
 
-  100.times do |n|
-    Customer.create!(
-      last_name: "test#{n + 1}山",
-      first_name: "test#{n + 1}太郎子",
-      last_name_kana: "test#{n + 1}ヤマ",
-      first_name_kana: "test#{n + 1}タロウコ",
-      email: "test#{n + 1}@test.jp",
-      password: "testpass",
-      postal_code: "1500041",
-      address: "東京都渋谷区神南１丁目１９−１１ パークウェースクエア24#{n + 1}",
-      telephone_number: "0123456789",
-      is_active: true
-      )
-  end
+20.times do |n|
+  Customer.create!(
+    email: "test#{n + 1}@test.com",
+    password: "123456",
+    first_name: "名#{n + 1}",
+    last_name: "姓#{n + 1}",
+    first_name_kana: "セイ",
+    last_name_kana: "メイ",
+    postal_code: "1234567",
+    address: "東京都渋谷区神南1丁目19-11 パークウェースクエア2 4階#{n + 1}",
+    telephone_number: "09012345678"
+  )
+end
+
+# 8.times do |n|
+#   Order.create!(
+#     customer_id: n + 1,
+#     address: "東京都渋谷区神南1丁目19-11 パークウェースクエア2 4階#{n + 1}",
+#     postal_code: "123456#{n + 1}",
+#     name: "test#{n + 1}",
+#     postage: "800",
+#     payment_amount: "#{500 * ( n + 1 ) +800}",
+#     payment_method: "クレジットカード",
+#     status: 0
+#   )
+# end

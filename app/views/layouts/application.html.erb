@@ -3,7 +3,7 @@
   <head>
     <title>ながのCAKE</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <!--<script src="https://kit.fontawesome.com/a69f599634.js" crossorigin="anonymous"></script>-->
+    <script src="https://kit.fontawesome.com/a69f599634.js" crossorigin="anonymous"></script>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -15,13 +15,13 @@
     <header class="shadow-sm">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-          <img src="" alt="ながのCAKEロゴ">
+          <img src="" alt="ながのCAKEロゴ" class="navbar-brand p-3">
 
         <!-- ヘッダーメニューの表示設定　-->
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="navbar-collapse collapse" id="navbarNavDropdown" style>
+        <div class="<navbar-collapse collapse show" id="navbarNavDropdown" style>
           <ul class="navbar-nav ml-auto">
 
               <!--  会員のログイン時に表示されるメニュー　-->
@@ -30,69 +30,74 @@
                 <li class="header-customer-name">
                   ようこそ、<%= customer.first_name %>さん！
                 </li>
-                <li>
+                <li class="nav-item border">
                   <%= link_to customer_path(current_customer_id), class: 'nav-link' do %>マイページ<% end %><!--会員マイページ-->
                 </li>
-                <li>
+                <li class="nav-item">
                   <%= link_to items_path, class: 'nav-link' do %>商品一覧<% end %><!--会員用の商品一覧ページ-->
                 </li>
-                <li>
+                <li class="nav-item">
                   <%= link_to cart_items_path, class: 'nav-link' do %>カート<% end %><!--会員のカート-->
                 </li>
-                <li>
+                <li class="nav-item">
                   <%= link_to destroy_customer_session_path, class: 'nav-link' do %>ログアウト<% end %><!--会員のカート-->
                 </li>
 
                 <!--　管理者のログイン時に表示されるメニュー　-->
               <% elsif admin_signed_in? %>
 
-                <li>
+                <li class="nav-item">
                   <%= link_to admin_items_path, class: 'nav-link' do %> 商品一覧<% end %><!--商品一覧-->
                 </li>
-                <li>
+                <li class="nav-item">
                   <%= link_to admin_customers_path, class: 'nav-link' do %>会員一覧<% end%><!--会員の一覧-->
                 </li>
-                <li>
+                <li class="nav-item">
                   <%= link_to admin_root_path, class: 'nav-link' do %>注文履歴一覧<% end %><!--注文履歴の一覧-->
                 </li>
-                <li>
+                <li class="nav-item">
                   <%= link_to admin_genres_path, class: 'nav-link' do %>ジャンル一覧<% end %><!-- ジャンルの一覧　-->
                 </li>
-                <li>
+                <li class="nav-item">
                   <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link'  do %>ログアウト<% end %>
                 </li>
 
               <!--　非ログイン時（会員）表示メニュー-->
               <% elsif current_page?(root_path) %>
 
-                <li>
+                <li class="nav-item">
                   <%= link_to about_path, class: 'nav-link' do %>About<% end %><!--Aboutページ-->
                 </li>
-                <li>
+                <li class="nav-item">
                   <%= link_to items_path, class: 'nav-link' do %>商品一覧<% end %><!--会員用の商品一覧-->
                 </li>
-                <li>
+                <li class="nav-item">
                   <%= link_to new_customer_registration_path, class: 'nav-link' do %>新規登録<% end %><!--会員用の新規登録ページへ--->
                 </li>
-                <li>
+                <li class="nav-item">
                   <%= link_to new_customer_session_path, class: 'nav-link' do %>ログイン<% end %><!--会員のログインページ-->
                 </li>
               <!--  非ログイン時（管理者）表示メニュー -->
               <% else %>
-                <li>
+                <li class="nav-item">
                   <%= link_to about_path, class: 'nav-link' do %>About<% end %><!--Aboutページ-->
                 </li>
-                <li>
+                <li class="nav-item">
                   <%= link_to items_path, class: 'nav-link' do %>商品一覧<% end %><!--会員用の商品一覧-->
                 </li>
-                <li>
+                <li class="nav-item">
                   <%= link_to new_customer_registration_path, class: 'nav-link' do %>新規登録<% end %><!--会員用の新規登録ページへ--->
                 </li>
-                <li>
+                <li class="nav-item">
                   <%= link_to new_admin_session_path, class: 'nav-link' do %>ログイン<% end %><!--会員のログインページ-->
                 </li>
               </ul>
             <% end %>
+            <div class="input-group">
+              <input type="text" class="form-control rounded-pill position-relative" placeholder="Search">
+                  <div><button class="btn position-absolute" type="button" id="button-addon2"><i class="fas fa-search"></i></button>              </button>
+                  </div>
+            </div>
         </div>
         </div>
       </nav>
