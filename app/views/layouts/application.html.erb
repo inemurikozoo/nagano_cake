@@ -17,31 +17,30 @@
         <div class="container">
           <img src="" alt="ながのCAKEロゴ" class="navbar-brand p-3">
 
-        <!-- ヘッダーメニューの表示設定　-->
-        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="<navbar-collapse collapse show" id="navbarNavDropdown" style>
+          <!-- ヘッダーメニューの表示設定　-->
+          <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="<navbar-collapse collapse show" id="navbarNavDropdown" style>
+          
           <ul class="navbar-nav ml-auto">
-
-              <!--  会員のログイン時に表示されるメニュー　-->
-              <% if customer_signed_in? %>
-
-                <li class="header-customer-name">
-                  ようこそ、<%= customer.first_name %>さん！
-                </li>
-                <li class="nav-item border">
-                  <%= link_to customer_path(current_customer_id), class: 'nav-link' do %>マイページ<% end %><!--会員マイページ-->
-                </li>
-                <li class="nav-item">
-                  <%= link_to items_path, class: 'nav-link' do %>商品一覧<% end %><!--会員用の商品一覧ページ-->
-                </li>
-                <li class="nav-item">
-                  <%= link_to cart_items_path, class: 'nav-link' do %>カート<% end %><!--会員のカート-->
-                </li>
-                <li class="nav-item">
-                  <%= link_to destroy_customer_session_path, class: 'nav-link' do %>ログアウト<% end %><!--会員のカート-->
-                </li>
+            <!--  会員のログイン時に表示されるメニュー　-->
+            <% if customer_signed_in? %>
+            <li class="header-customer-name">
+              ようこそ、<%= customer.first_name %>さん！
+            </li>
+            <li class="nav-item border">
+              <%= link_to customer_path(current_customer_id), class: 'nav-link' do %>マイページ<% end %><!--会員マイページ-->
+            </li>
+            <li class="nav-item">
+              <%= link_to items_path, class: 'nav-link' do %>商品一覧<% end %><!--会員用の商品一覧ページ-->
+            </li>
+            <li class="nav-item">
+              <%= link_to cart_items_path, class: 'nav-link' do %>カート<% end %><!--会員のカート-->
+            </li>
+            <li class="nav-item">
+              <%= link_to destroy_customer_session_path, class: 'nav-link' do %>ログアウト<% end %><!--会員のカート-->
+            </li>
 
                 <!--　管理者のログイン時に表示されるメニュー　-->
               <% elsif admin_signed_in? %>
@@ -91,11 +90,12 @@
                 <li class="nav-item">
                   <%= link_to new_admin_session_path, class: 'nav-link' do %>ログイン<% end %><!--会員のログインページ-->
                 </li>
-              </ul>
             <% end %>
+          </ul>
+            <!--検索ボックス-->
             <div class="input-group">
-              <input type="text" class="form-control rounded-pill position-relative" placeholder="Search">
-                  <div><button class="btn position-absolute" type="button" id="button-addon2"><i class="fas fa-search"></i></button>              </button>
+              <input type="text" class="form-control position-relative" placeholder="Search">
+                  <div><button class="btn position-absolute" type="button" id="button-addon2"><i class="fas fa-search"></i></button></button>
                   </div>
             </div>
         </div>

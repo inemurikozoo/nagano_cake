@@ -1,5 +1,6 @@
 class Admin::HomesController < ApplicationController
   def top
-    @orders = Order.all
+    @customers = Customer.all.inclues(:orders)
+    @orders = Order.all.inclues(:order_items)
   end
 end
