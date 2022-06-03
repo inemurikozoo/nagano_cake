@@ -1,6 +1,6 @@
 class Admin::HomesController < ApplicationController
   def top
-    @customers = Customer.all.inclues(:orders)
-    @orders = Order.all.inclues(:order_items)
+    @orders = Order.page(params[:page])
+    @order_items = OrderItem.all
   end
 end

@@ -98,7 +98,7 @@ Item.create!(
   is_active: true
   )
 
-20.times do |n|
+30.times do |n|
   Customer.create!(
     email: "test#{n + 1}@test.com",
     password: "123456",
@@ -113,7 +113,7 @@ Item.create!(
   )
 end
 
-10.times do |n|
+20.times do |n|
   Order.create!(
     customer_id: n + 1,
     postal_code: "123456#{n + 1}",
