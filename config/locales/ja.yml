@@ -206,15 +206,15 @@ ja:
       short: "%m/%d %H:%M"
     pm: 午後
 
-# ja:
-#   enums:
-#     order:
-#       pay_type:
-#         credit_card: "クレジットカード"
-#         transfer: "銀行振込"
-#       status:
-#         not_payment: "入金待ち"
-#         payment_comfirm: "入金確認"
-#         producting: "製作中"
-#         ready_to_ship: "発送準備中"
-#         sent: "発送済み"
+ja:
+  enums:
+    order:
+      pay_type:
+        credit_card: "クレジットカード"
+        transfer: "銀行振込"
+      status:
+        not_payment: "入金待ち"
+        payment_comfirm: "入金確認"
+        producting: "製作中"
+        ready_to_ship: "発送準備中"
+        sent: "発送済み"

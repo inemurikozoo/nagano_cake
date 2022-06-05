@@ -98,6 +98,32 @@ Item.create!(
   is_active: true
   )
 
+Item.create!(
+  genre_id: 2,
+  name: "マカロンセット（16個）",
+  introduction: "看板商品、雲のマカロンがお求めやすいセットになりました。",
+  price: 2000,
+  is_active: false
+  )
+  
+Item.create!(
+  genre_id: 1,
+  name: "バナナケーキ",
+  introduction: "お子様に大人気！食べやすい優しい味のバナナケーキです。",
+  price: 2000,
+  is_active: true
+  )
+
+30.times do |n|
+  Item.create!(
+    genre_id: 4,
+    name: "バナナケーキ#{n + 1}",
+    introduction: "お子様に大人気！食べやすい優しい味のバナナケーキです。#{n + 1}",
+    price: 200 * n,
+    is_active: true
+    )
+end
+
 30.times do |n|
   Customer.create!(
     email: "test#{n + 1}@test.com",
