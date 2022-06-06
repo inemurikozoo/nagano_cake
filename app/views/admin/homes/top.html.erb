@@ -18,11 +18,10 @@
         <%= link_to order.created_at, admin_path(order.customer.id) %>
       </td>
       <td class="col-md-3">
-            <%= order.customer.last_name %><%= order.customer.first_name %>
+            <%= full_name(order.customer) %>
       </td>
-
       <td class="col-md-3">
-           "注文ごとの注文数量"
+           <%= order_item.amount %>
       </td>
       <td class="col-md-3">
             <%= order.status_i18n %>

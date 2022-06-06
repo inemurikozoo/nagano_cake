@@ -1,5 +1,5 @@
 <div class="container-fluid">
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<%= form_with scope: :session, url: login_path,local: true do |f| %>
   <div class="col-md-6 mx-auto mt-5">
   <h5 class="head-line text-left">管理者ログイン</h5>
   

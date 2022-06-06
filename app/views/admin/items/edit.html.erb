@@ -1,0 +1,63 @@
+<div class="col-md-8 mx-auto mt-5">
+  <h5 class="text-left pb-4">
+  	<span style="background-color:#f5f5f5">　商品編集　</span>
+  </h5>
+
+<%= form_with model: @item do |f| %>
+
+  <div class="row">
+    <table class="table table-borderless">
+			<tr>
+		  	<th>
+		 			商品画像
+		 	  </th>
+		   	<td>
+		 			
+		 		</td>
+		 	</tr>
+		 	<tr>
+		 		<th>
+		 			商品名
+		 		</th>
+		 		<td>
+		 			<%= f.text_field :name %>
+		 		</td>
+		 	</tr>
+		 	<tr>
+		 		<th>
+	    		商品説明
+	    	</th>
+	    	<td>
+	    		<%= f.text_area :introduction %>
+	    	</td>
+	    </tr>
+	    <tr>
+	    	<th>
+	    		ジャンル
+	    	</th>
+	    	<td>
+	     			※ドロップダウンリスト※
+	    	</td>
+	     	</tr>
+	        	<tr>
+	        		<th>
+	        			税抜価格
+	        		</th>
+	        		<td>
+	        			<%= f.text_field :price %>
+	        		</td>
+	        	</tr>
+	        	<tr>
+	        		<th>
+	        			販売ステータス
+	        		</th>
+	        		<td>
+	        			<%= f.radio_button :is_active, :true %>
+	        			<%= f.label :is_active, "販売中", {value: :true, style: "display: inline-block;"} %>
+	        			<%= f.radio_button :is_active, :false %>
+	<% end %>
+	        		</td>
+	        	</tr>
+	        </table>
+	   </div>
+	 </div>

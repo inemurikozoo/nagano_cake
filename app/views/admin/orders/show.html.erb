@@ -10,7 +10,7 @@
 		 						<strong>購入者</strong>
 		 					</th>
 		 					<td>
-		 						<%= @order.customer.last_name %> <%= @order.customer.first_name %>
+		 						<%= full_name(@order.customer) %>
 		 					</td>
 		 				</tr>
 		 				<tr>
@@ -42,7 +42,8 @@
 	        			<strong>注文ステータス</strong>
 	        		</th>
 	        		<td>
-	        			※セレクトボックス実装箇所※
+	        			<%= select :status, Order.statuses.keys.to_a %>
+	        			<%= select :status, Order.statuses.values.to_a %>
 	        		</td>
 	        	</tr>
 	        </table>
@@ -58,30 +59,30 @@
         <th></th>
       </tr>
     </thead>
-  	 	<% @order_items.each do |order_item| %>
+  	 	<% @order_item.each do |order_item| %>
      	<tr>
        <td class="text-left col-md-2">
         <%= order_item.item.name %>
       </td>
       <td class="col-md-3">
-        <%= order_item.item.price.to_s(:delimited) %>
+        <%= tax_in_price(order_item.price).to_s(:delimited) %>
       </td>
       <td class="col-md-2">
         <%= order_item.amount %>
       </td>
       <td class="col-md-4">
-        <%= order_item.item.price.to_s(:delimited) %>
+        <%= subtotal(order_item).to_s(:delimited) %>
       </td>
       <td class="col-md-2">
-        製作ステータスのセレクトボックス実装箇所
+        
+    </div>
+       
       </td>
-
-
     </tr>
 
-    <% end %>
+    	<% end %>
 
   </tbody>
   </table>
-	     	</div>
-	    </div>
+ </div>
+</div>
