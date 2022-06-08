@@ -1,10 +1,14 @@
+<div class="container">
 <div class="col-md-8 mx-auto mt-5">
   <h5 class="text-left pb-4">
   	<span style="background-color:#f5f5f5">　商品詳細　</span>
   </h5>
 
     <div class="row">
-     	<table class="table table-borderless">
+    	<div class="col-md-4">
+    		<%= image_tag @item.get_image %>
+    	<div class="col">
+     		<table class="table table-borderless">
 		 				<tr>
 		 					<th>
 		 						商品名
@@ -35,7 +39,7 @@
 	        			（税抜価格）
 	        		</th>
 	        		<td>
-	        		<p><%= @item.price.to_s(:delimited) %> (<%= tax_in_price(@item.price).to_s(:delimited) %>)</p>
+	        		<p><%= @item.price.to_s(:delimited) %> (<%= tax_in_price(@item.price).to_s(:delimited) %>)円</p>
 	        		</td>
 	        	</tr>
 	        	<tr>
@@ -53,5 +57,9 @@
 	        		</td>
 	        	</tr>
 	       </table>
+	       <div class="row justify-fontent-center">
+	       		<a class="btn btn-success" href="#" role="button">編集する</a>
+	       </div>
 	 </div>
 </div>
+</div
