@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres,    only: [:index, :create, :edit, :update]
     root :to => 'homes#top'
-    resources :items
+    resources :items, only: [:index, :new, :create, :show, :edit, :update]
   end
   
 #管理者用
