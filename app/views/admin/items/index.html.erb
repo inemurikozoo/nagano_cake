@@ -29,13 +29,11 @@
       </td>
       <td class="col-md-2">
         <% if item.is_active == true %>
-          <p class="text-success font-weight-bold">販売中</p>
-        <% else %>
-          <p class="text-secondary font-weight-bold">販売停止中</p>
+            <p class="text-success font-weight-bold">販売中</p>
+          <% else %>
+            <p class="text-secondary font-weight-bold">販売停止中</p>
         <% end %>
       </td>
-
-
     </tr>
 
     <% end %>
