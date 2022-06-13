@@ -28,7 +28,7 @@ before_action :set_genres, only: [:new,:create,:edit,:update]
   
   def update
     @item = Item.find(params[:id])
-     if @item.update(item_params)
+    if @item.update(item_params)
       redirect_to admin_item_path(@item.id)
     else
       render :edit
