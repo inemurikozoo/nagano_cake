@@ -23,12 +23,12 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'status/:id' => 'orders#show'
-    put 'status/:id' => 'orders#update'
+    put 'status/:id/order' => 'orders#update', as: 'order'
+    put 'status/:id' => 'product_details#update', as: 'product_details'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres,    only: [:index, :create, :edit, :update]
     root :to => 'homes#top'
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
-    
   end
   
 #管理者用

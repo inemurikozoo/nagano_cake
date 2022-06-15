@@ -43,13 +43,14 @@
 	        			<strong>注文ステータス</strong>
 	        		</th>
 	        		<td>
-	        			<%= form_with model: @order, url: , local: true do |f| %>
+	        			<!--注文ステータスordercontroller-->
+	        			<%= form_with model: @order, url: admin_order_path(@order.id), local: true do |f| %>
 	        				<%= f.select :status, options_for_select(Order.statuses_i18n.invert) %>
 	        				<%= f.submit "更新", class:"btn btn-success btn-sm" %>
 	        		</td>
 	        	</tr>
 	        </table>
-					<% end %>
+								<% end %>
 	
 	  <table class="table table-hover px-auto">
     <thead class="thead-light">
@@ -77,8 +78,8 @@
         <%= subtotal(order_item).to_s(:delimited) %>
       </td>
       <td class="col-md-3">
-      	<!--製作ステータスの更新-->
-      	<%= form_with model: @order_item, url: admin_path(@order_items.id), local: true do |f| %>
+      	<!--製作ステータスの更新(order_detailcontroller-->
+      	<%= form_with model: @order_item, url: admin_product_details_path(@order_item), local: true do |f| %>
         	<%= f.select :status, options_for_select(OrderItem.statuses_i18n.invert), class: "form-control" %>
         	<%= f.submit "更新", class:"btn btn-success btn-sm" %>
         <% end %>
@@ -87,7 +88,7 @@
 
     	<% end %>
 
-  </tbody>
+  
   </table>
  </div>
 </div>
