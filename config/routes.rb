@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  get 'product_details/update'
   # root :to => 'homes#top'
   get '/about' => 'public/homes#about'
   
@@ -22,10 +23,12 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'status/:id' => 'orders#show'
+    put 'status/:id' => 'orders#update'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres,    only: [:index, :create, :edit, :update]
     root :to => 'homes#top'
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
+    
   end
   
 #管理者用

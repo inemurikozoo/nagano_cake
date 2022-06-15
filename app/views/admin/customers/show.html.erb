@@ -1,11 +1,13 @@
 <div class="container">
 <div class="mx-auto mt-5">
   <h5 class="text-left pb-4">
-  	<span style="background-color:#f5f5f5">　<%= full_name(@customer)さんの会員詳細　</span>
+  	<span style="background-color:#f5f5f5">
+  		　<%= full_name(@customer) %>さんの会員詳細　
+  	</span>
   </h5>
 
     <div class="row">
-    	<div class="col-md-10">
+    	<div class="col-md-12">
      		<table class="table table-borderless">
 		 				<tr>
 		 					<th>
@@ -20,7 +22,7 @@
 		 						氏名
 		 					</th>
 		 					<td>
-		 						<%= full_name(@customer) %>
+		 						<%= @customer.last_name %>  <%= @customer.first_name %>
 		 					</td>
 		 				</tr>
 		 				<tr>
@@ -28,7 +30,7 @@
 	        			フリガナ
 	        		</th>
 	        		<td>
-	        			<%= full_name_kana(@customer) %>
+	        			<%= @customer.last_name_kana %> <%= @customer.first_name_kana %>
 	        		</td>
 	        	</tr>
 	        	<tr>
@@ -79,8 +81,12 @@
 	        	</tr>
 	       </table>
 	       <div class="row justify-content-center">
-	       		<%= link_to "編集する", edit_admin_item_path, class: 'btn btn-success' %>
-	       		<%= link_to "注文履歴一覧を見る", edit_admin_item_path, class: 'btn btn-success' %>
+	       		<div class="col-md-4">
+	       			<%= link_to "編集する", edit_admin_customer_path, class: 'btn btn-success' %>
+	       		</div>
+	       		<div class="col-md-4 offset-md-1">
+	       			<%= link_to "注文履歴一覧を見る", edit_admin_item_path, class: 'btn btn-primary' %>
+	       		</div>
 	       </div>
 	 </div>
 </div>

@@ -9,7 +9,7 @@ class Admin::OrdersController < ApplicationController
     if @order.update(order_params)
       redirect_to admin_path(@order.id)
     else
-      render show
+      render :show
     end
   end
 
