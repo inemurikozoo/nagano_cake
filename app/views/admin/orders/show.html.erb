@@ -44,8 +44,8 @@
 	        		</th>
 	        		<td>
 	        			<!--注文ステータスordercontroller-->
-	        			<%= form_with model: @order, url: admin_order_path(@order.id), local: true do |f| %>
-	        				<%= f.select :status, options_for_select(Order.statuses_i18n.invert) %>
+	        			<%= form_with model: @order, url: admin_order_path(@order.id), method: :put, local: true do |f| %>
+	        				<%= f.select :status, Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]} %>
 	        				<%= f.submit "更新", class:"btn btn-success btn-sm" %>
 	        		</td>
 	        	</tr>
@@ -79,8 +79,8 @@
       </td>
       <td class="col-md-3">
       	<!--製作ステータスの更新(order_detailcontroller-->
-      	<%= form_with model: @order_item, url: admin_product_details_path(@order_item), local: true do |f| %>
-        	<%= f.select :status, options_for_select(OrderItem.statuses_i18n.invert), class: "form-control" %>
+      	<%= form_with model: @order_item, url: admin_product_details_path(@order_item), method: :put, local: true do |f| %>
+        	<%= f.select :status, OrderItem.statuses.keys.map {|k| [I18n.t("enums.order_item.status.#{k}"), k]} %>
         	<%= f.submit "更新", class:"btn btn-success btn-sm" %>
         <% end %>
       </td>
