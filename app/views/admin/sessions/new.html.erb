@@ -1,13 +1,16 @@
 <div class="container-fluid">
-<%= form_with scope: :session, url: login_path,local: true do |f| %>
-  <div class="col-md-6 mx-auto mt-5">
-  <h5 class="head-line text-left">管理者ログイン</h5>
+
+<%= form_with scope: :session, url: admin_session_path,local: true do |f| %>
+  <div class="col-md-10 mx-auto mt-5">
+  <h5 class="head-line pb-4">
+    <span style="background-color:#f5f5f5">　管理者ログイン　</span>
+  </h5>
   
   <div class="field">
     <form class="form-horizonal">
     <div class="form-group">
     <%= f.label :email, "メールアドレス　　" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %>
     </div>
   </div>
 
@@ -33,4 +36,5 @@
   <% end %>
   </div>
   <%= render "admin/shared/links" %>
-</div>
+  
+  </div>

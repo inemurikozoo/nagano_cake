@@ -22,14 +22,14 @@
                   aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          
+
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <ul class="navbar-nav">
               <div class="container">
               <div class="row">
-            
-            
-            
+
+
+
               <!--  会員のログイン時に表示されるメニュー　-->
               <% if customer_signed_in? %>
               <li class="header-customer-name">
@@ -107,11 +107,13 @@
                   </div>
               </div>
             </div>
-        
+
       </nav>
     </header>
+
     <main class="mb-auto">
       <%= yield %>
     </main>
+
   </body>
 </html>

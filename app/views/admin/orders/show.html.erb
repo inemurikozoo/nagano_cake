@@ -1,10 +1,11 @@
+
 <div class="col-md-10 mx-auto mt-5">
-  <h5 class="text-left pb-4">
+  <h5 class="pb-4">
   	<span style="background-color:#f5f5f5">　注文履歴詳細　</span>
   </h5>
 
     <div class="row">
-    	
+
      		<table class="table table-borderless">
 		 				<tr>
 		 					<th>
@@ -51,7 +52,7 @@
 	        	</tr>
 	        </table>
 								<% end %>
-	
+
 	  <table class="table table-hover px-auto">
     <thead class="thead-light">
       <tr>
@@ -63,7 +64,7 @@
         <th></th>
       </tr>
     </thead>
-  	 	<% @order_item.each do |order_item| %>
+  	 	<% @order_items.each do |order_item| %>
      	<tr>
        <td class="text-left col-md-3">
         <%= order_item.item.name %>
@@ -88,7 +89,7 @@
 
     	<% end %>
 
-  
+
   </table>
  </div>
 </div>

@@ -1,12 +1,12 @@
 class ApplicationController < ActionController::Base
   # before_action :authenticate_admin!, if: :admin_url
- before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   def after_sign_in_path_for(resource)
-    if customer_signed_in?
-      customer_path(resource)
-    else
+    if admin_signed_in?
       admin_root_path
+    else
+      customer_path(resource)
     end
   end
 
