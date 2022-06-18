@@ -1,24 +1,30 @@
 Rails.application.routes.draw do
 
-
-  get 'product_details/update'
-  # root :to => 'homes#top'
-  get '/about' => 'public/homes#about'
-  
-  get 'items' => 'public/items#index'
-  # get 'items/show'
-  root :to => 'public/homes#top'
-  resources :customers, only: [:show, :quit]
   #   #会員用
   devise_for :customers, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-  
+
+  #管理者用
+    devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+    sessions: "admin/sessions"
+  }
   resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
   # resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
   # resources :addresses
-  
+
+  # 会員用ルーティング
+  get 'product_details/update'
+  # root :to => 'homes#top'
+  get '/about' => 'public/homes#about'
+
+  get 'items' => 'public/items#index'
+  # get 'items/show'
+  root :to => 'public/homes#top'
+  resources :customers, only: [:show, :quit]
+
+
 #管理者用ルーティング
 
   namespace :admin do
@@ -30,11 +36,8 @@ Rails.application.routes.draw do
     root :to => 'homes#top'
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
   end
-  
-#管理者用
-    devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-    sessions: "admin/sessions"
-  }
-  
+
+
+
      # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
