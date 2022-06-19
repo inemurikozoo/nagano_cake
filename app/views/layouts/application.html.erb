@@ -25,10 +25,10 @@
               </button>
 
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
-              <!--<div class="d-flex justify-content-end">-->
-                <div class="w-50"><!--width50%-->
-                <ul class="navbar">
+              <div class="d-flex justify-content-end">
                 
+                <ul class="navbar">
+                <div class="d-md-inline">
               <!--  会員のログイン時に表示されるメニュー　-->
               
                 <% if customer_signed_in? %>
@@ -100,7 +100,6 @@
                   <%= link_to new_customer_session_path, class: 'nav-link' do %>ログイン<% end %><!--会員のログインページ-->
                 </li>
               
-              
               </div>
             <% end %>
             </div>
@@ -114,7 +113,7 @@
                   </div>
               </div>
             </div>
-          <!--</div>-->
+          </div>
         </div>
       </nav>
     </header>
