@@ -14,17 +14,20 @@
   <body class="">
     <header class="shadow-sm">
       <nav class="navbar navbar-expand-lg">
-        <div class="container">
-          <!--ながのCAKEロゴ-->
-          <a class="navbar-brand px-3 pe-3" alt="ながのCAKEロゴ" href="/"><%= image_tag("no_image.jpg") %></a>
-          <!-- ヘッダーメニューの折り畳み、ブレーク　-->
-          <button type="button" class="navbar-toggler"  data-toggle="collapse" data-target="#navbarNavDropdown"
+        
+          
+                <!--ながのCAKEロゴ-->
+              <a class="navbar-brand px-5 pe-3" alt="ながのCAKEロゴ" href="/"><%= image_tag("no_image.jpg") %></a>
+                <!-- ヘッダーメニューの折り畳み、ブレーク　-->
+              <button type="button" class="navbar-toggler"  data-toggle="collapse" data-target="#navbarNavDropdown"
                   aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+                <span class="navbar-toggler-icon"></span>
+              </button>
 
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
-              <ul class="navbar-nav">
+              <!--<div class="d-flex justify-content-end">-->
+                <div class="w-50"><!--width50%-->
+                <ul class="navbar">
                 
               <!--  会員のログイン時に表示されるメニュー　-->
               
@@ -64,51 +67,55 @@
                 <li class="nav-item">
                   <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link'  do %>ログアウト<% end %>
                 </li>
-
-              <!--　非ログイン時（会員）表示メニュー-->
               <% elsif current_page?(root_path) %>
-                <li class="nav-item btn btn-outline-secondary">
-                  <%= link_to about_path, class: 'nav-link' do %>About<% end %><!--Aboutページ-->
-                </li>
-                <li class="nav-item btn btn-outline-secondary ms-2">
-                  <%= link_to items_path, class: 'nav-link' do %>商品一覧<% end %><!--会員用の商品一覧-->
-                </li>
-                <li class="nav-item btn btn-outline-secondary ms-2">
-                  <%= link_to new_customer_registration_path, class: 'nav-link' do %>新規登録<% end %><!--会員用の新規登録ページへ--->
-                </li>
-                <li class="nav-item btn btn-outline-secondary ms-2">
-                  <%= link_to new_customer_session_path, class: 'nav-link' do %>ログイン<% end %><!--会員のログインページ-->
-                </li>
-              <!--  非ログイン時（管理者）表示メニュー -->
-              <% else %>
-                <div class="btn-group d-flex bd-highlight">
+                <!--  非ログイン時（管理者）表示メニュー -->
+                <div class>
                   <li class="nav-item btn btn-outline-secondary">
-                    <%= link_to about_path, class: 'nav-link' do %>About<% end %><!--Aboutページ-->
+                    <%= link_to about_path, class: 'nav-link' do %>  About  <% end %><!--Aboutページ-->
                   </li>
                   <li class="nav-item btn btn-outline-secondary">
                     <%= link_to items_path, class: 'nav-link' do %>商品一覧<% end %><!--会員用の商品一覧-->
                   </li>
                   <li class="nav-item btn btn-outline-secondary">
-                    <%= link_to new_customer_registration_path, class: 'nav-link' do %>新規登録<% end %><!--会員用の新規登録ページへ--->
+                    <%= link_to new_customer_registration_path, class: 'nav-link' do %> 新規登録 <% end %><!--会員用の新規登録ページへ--->
                   </li>
                 
                   <li class="nav-item btn btn-outline-secondary">
                     <%= link_to new_customer_session_path, class: 'nav-link' do %>ログイン<% end %><!--会員のログインページ-->
                   </li>
-                </div>
+                  
+                  
+              <% else %>
+                  <!--　非ログイン時（会員）表示メニュー-->
+                <li class="nav-item btn btn-outline-secondary">
+                  <%= link_to about_path, class: 'nav-link' do %>About<% end %><!--Aboutページ-->
+                </li>
+                <li class="nav-item btn btn-outline-secondary">
+                  <%= link_to items_path, class: 'nav-link' do %>商品一覧<% end %><!--会員用の商品一覧-->
+                </li>
+                <li class="nav-item btn btn-outline-secondary">
+                  <%= link_to new_customer_registration_path, class: 'nav-link' do %>新規登録<% end %><!--会員用の新規登録ページへ--->
+                </li>
+                <li class="nav-item btn btn-outline-secondary">
+                  <%= link_to new_customer_session_path, class: 'nav-link' do %>ログイン<% end %><!--会員のログインページ-->
+                </li>
+              
+              
+              </div>
             <% end %>
             </div>
           </ul>
-          </div>
+         
             <!--検索ボックス-->
-            <div class="container">
+            <div class="w-50">
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search">
-                  <div><button class="btn position-absolute" type="button" id="button-addon2"><i class="fas fa-search"></i></button></button>
+                <input type="text" class="form-control position-relative" placeholder="Search">
+                  <div><button class="btn position-absolute" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
                   </div>
               </div>
             </div>
-
+          <!--</div>-->
+        </div>
       </nav>
     </header>
 
