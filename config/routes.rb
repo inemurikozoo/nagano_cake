@@ -16,13 +16,12 @@ Rails.application.routes.draw do
 
   # 会員用ルーティング
   get 'product_details/update'
-  # root :to => 'homes#top'
-  get '/about' => 'public/homes#about'
+  get root to: 'public/homes#top'
+  get 'about' => 'public/homes#about'
 
   get 'items' => 'public/items#index'
   # get 'items/show'
-  root :to => 'public/homes#top'
-  resources :customers, only: [:show, :quit]
+  resources :customers
 
 
 #管理者用ルーティング

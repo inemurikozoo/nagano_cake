@@ -14,8 +14,8 @@
   <body class="">
     <header class="shadow-sm">
       <nav class="navbar navbar-expand-lg">
-        
-          
+
+
                 <!--ながのCAKEロゴ-->
               <a class="navbar-brand px-5 pe-3" alt="ながのCAKEロゴ" href="/"><%= image_tag("no_image.jpg") %></a>
                 <!-- ヘッダーメニューの折り畳み、ブレーク　-->
@@ -26,11 +26,11 @@
 
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <div class="d-flex justify-content-end">
-                
+
                 <ul class="navbar">
                 <div class="d-md-inline">
               <!--  会員のログイン時に表示されるメニュー　-->
-              
+
                 <% if customer_signed_in? %>
                 <div class="btn-group ms-2">
                 <li class="header-customer-name">
@@ -79,12 +79,12 @@
                   <li class="nav-item btn btn-outline-secondary">
                     <%= link_to new_customer_registration_path, class: 'nav-link' do %> 新規登録 <% end %><!--会員用の新規登録ページへ--->
                   </li>
-                
+
                   <li class="nav-item btn btn-outline-secondary">
                     <%= link_to new_customer_session_path, class: 'nav-link' do %>ログイン<% end %><!--会員のログインページ-->
                   </li>
-                  
-                  
+
+
               <% else %>
                   <!--　非ログイン時（会員）表示メニュー-->
                 <li class="nav-item btn btn-outline-secondary">
@@ -99,12 +99,12 @@
                 <li class="nav-item btn btn-outline-secondary">
                   <%= link_to new_customer_session_path, class: 'nav-link' do %>ログイン<% end %><!--会員のログインページ-->
                 </li>
-              
+
               </div>
             <% end %>
             </div>
           </ul>
-         
+
             <!--検索ボックス-->
             <div class="w-50">
               <div class="input-group">
