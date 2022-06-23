@@ -1,7 +1,17 @@
-<h1>商品一覧</h1>
-<p>(全<%= @items.count %>件)</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
 
-<
+      <h1 class="pt-4">商品一覧<span>(全<%= @items.total_count %>件)</span></h1>
 
-<%= image_tag("no_image.jpg", size: "300x300", alt: "商品イメージ") %>
+        <% @items.each do |item| %>
+
+        <div class="col d-flex aline-items">
+          <%= image_tag item.get_image %>
+          <p><strong><%= item.name %></strong></p>
+          <p><strong>￥<%= item.price.to_s( :delimited) %></strong></p>
+
+<% end %>
+
+<%= paginate @items %>
 

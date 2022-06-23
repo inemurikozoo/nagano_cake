@@ -11,4 +11,6 @@ class Item < ApplicationRecord
     end
     image
   end
+  
+  
 end
