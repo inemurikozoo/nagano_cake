@@ -1,21 +1,26 @@
 <div class="container">
   <div class="row">
     <div class="col-3">
+      <!--genreサイドバー挿入予定箇所-->
     </div>
     <div class="col-9">
-      <h1 class="py-4">商品一覧<span>(全<%= @items.total_count %>件)</span></h1>
+      <h2 class="py-4">商品一覧<span><small>(全<%= @items.total_count %>件)</small></span></h2>
 
+      <div class="container d-flex justify-content-start">
         <% @items.each do |item| %>
-
-        <div class="d-flex aline-items-start">
-          
-          <%= image_tag item.get_image, size: "300x300" %>
-          <p><strong><%= item.name %></strong></p>
-          <p><strong>￥<%= item.price.to_s( :delimited) %></strong></p>
+        <div class="w-25 px-3">
+          <div class="">
+            <%= image_tag item.get_image, size: "150x150" %>
+            <p><small><strong><%= item.name %></strong></small></p>
+            <p><small><strong>￥<%= item.price.to_s( :delimited) %></small></strong></p>
+          </div>
         </div>
-
+      
 
         <% end %>
+      </div>
     </div>
-  <%= paginate @items %>
+  <div class="text-aline-center">
+    <%= paginate @items %>
+  </div>
 
