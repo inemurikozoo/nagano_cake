@@ -1,17 +1,21 @@
 <div class="container">
   <div class="row">
-    <div class="col">
-
-      <h1 class="pt-4">商品一覧<span>(全<%= @items.total_count %>件)</span></h1>
+    <div class="col-3">
+    </div>
+    <div class="col-9">
+      <h1 class="py-4">商品一覧<span>(全<%= @items.total_count %>件)</span></h1>
 
         <% @items.each do |item| %>
 
-        <div class="col d-flex aline-items">
-          <%= image_tag item.get_image %>
+        <div class="d-flex aline-items-start">
+          
+          <%= image_tag item.get_image, size: "300x300" %>
           <p><strong><%= item.name %></strong></p>
           <p><strong>￥<%= item.price.to_s( :delimited) %></strong></p>
+        </div>
 
-<% end %>
 
-<%= paginate @items %>
+        <% end %>
+    </div>
+  <%= paginate @items %>
 

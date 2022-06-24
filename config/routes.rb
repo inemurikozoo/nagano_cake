@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   get 'about' => 'public/homes#about'
 
   get 'items' => 'public/items#index'
-  # get 'items/show'
+  get 'items/:id'  => 'public/items#show'
   resources :customers
 
 
