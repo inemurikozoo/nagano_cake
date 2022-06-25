@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
-  resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
+  
   # resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
   # resources :addresses
 
@@ -18,11 +18,10 @@ Rails.application.routes.draw do
   get 'product_details/update'
   get root to: 'public/homes#top'
   get 'about' => 'public/homes#about'
-
   get 'items' => 'public/items#index'
   get 'items/:id'  => 'public/items#show'
   resources :customers
-
+  resources :cart_items
 
 #管理者用ルーティング
 
