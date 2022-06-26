@@ -1,2 +1,23 @@
-<h1>Public::Orders#new</h1>
-<p>Find me in app/views/public/orders/new.html.erb</p>
+<div class="col-md-11 mx-auto mt-5">
+  <h5 class="pb-4">
+    <span style="background-color:#f5f5f5">
+        注文情報入力　
+    </span>
+  </h5>
+    <%= form_with model: @order, method: :post, url: new_order_path, method: :post, local: true do |f| %>
+      <strong>支払方法</strong><br />
+      <%= f.radio_button :pay_type, '0' %>
+	   	<%= f.label :pay_type, "クレジットカード", {value: '0', style: "display: inline-block;"} %><br />
+	   	<%= f.radio_button :pay_type, '1' %>
+	   	<%= f.label :pay_type, "銀行振込", {value: '1', style: "display: inline-block;"} %><br />
+      <strong>お届け先</strong><br />
+      <%= f.radio_button :address %>
+	   	<%= f.label :address, "ご自身の住所", {value: , style: "display: inline-block;"} %><br />
+	   	<%= f.radio_button :pay_type, '1' %>
+	   	<%= f.label :pay_type, "登録済み住所から選択", {value: '1', style: "display: inline-block;"} %><br />
+    
+    
+    
+    <% end %>
+    
+</div>

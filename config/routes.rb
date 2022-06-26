@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
-  
+
   # resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
   # resources :addresses
 
@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get 'items/:id'  => 'public/items#show'
   resources :customers
   resources :cart_items
+  get 'orders/new' => 'public/orders#new', as: 'new_order'
 
 #管理者用ルーティング
 
