@@ -1,2 +1,21 @@
-<h1>新着商品</h1>
+<p class="text-center">
+  ようこそ、ながのCAKEへ！<br>
+  このサイトは、ケーキ販売のECサイトになります。<br>
+  会員でない方も商品の閲覧はできますが、<br>
+  購入には会員登録が必要になります。
+</p>
 
+<h1><strong>新着商品</strong></h1>
+<!--新着商品の表示-->
+<div class="container d-flex justify-content-start">
+  <% @items.each do |item| %>
+    <div class="w-25 px-3">
+      <%= image_tag item.get_image, size: "150x150" %>
+      <p><small><strong><%= item.name %></strong></small></p>
+      <p><small><strong>￥<%= item.price.to_s( :delimited) %></small></strong></p>
+    </div>
+  <% end %>      
+</div>
+<div class="text-right">
+  <%= link_to "全ての商品を見る＞", url: items_path %>
+</div>

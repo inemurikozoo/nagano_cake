@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   #   #会員用
   devise_for :customers, skip: [:passwords], controllers: {
-    registrations: "public/registrations",
+    registrations: 'public/registrations',
     sessions: 'public/sessions'
   }
 
@@ -20,8 +20,7 @@ Rails.application.routes.draw do
   get 'about' => 'public/homes#about'
   get 'items' => 'public/items#index'
   get 'items/:id'  => 'public/items#show'
-  resources :customers
-  resources :cart_items
+  get 'cart_items' => 'public/cart_items#index'
   get 'orders/new' => 'public/orders#new', as: 'new_order'
 
 #管理者用ルーティング
