@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
-  before_action :configure_sign_in_params, only: [:create]
+  # before_action :configure_sign_in_params, only: [:create]
   # before_action :customer_state, only[:create, :new]
+  before_action :customer_state, only: [:create]
 
   # GET /resource/sign_in
   # def new
@@ -10,9 +11,9 @@ class Public::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    super
+  end
 
   # DELETE /resource/sign_out
   # def destroy
@@ -25,7 +26,7 @@ class Public::SessionsController < Devise::SessionsController
     @customer = Customer.find_by(email :params[:cusomer][:email])
     return if !@customer
     if @customer.valid_password?(params[:customer][:password]) && @customer.is_active == true
-      redirect_to :create  
+      redirect_to :create
     else
       redirect_to customer_session_path
     end

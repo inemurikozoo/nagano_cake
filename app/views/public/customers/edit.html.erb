@@ -1,0 +1,44 @@
+<div class="col-md-11 mx-auto mt-5">
+  <h5 class="pb-4">
+    <span style="background-color:#f5f5f5">
+        会員情報編集　
+    </span>
+  </h5>
+  
+  <%= form_with model: @customer, method: :patch, local: true do |f| %>
+    <div class="row">
+      <%= f.label "名前", class: "col-sm-2 col-form-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <%= f.label "フリガナ",class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana" %>
+      <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <%= f.label "郵便番号(ハイフンなし)", class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <%= f.label "住所", class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
+    </div>
+  </div>
+  
+   <div class="row">
+    <%= f.label "メールアドレス", class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-10">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+  </div>
