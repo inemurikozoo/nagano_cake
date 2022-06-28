@@ -13,7 +13,7 @@ class Public::OrdersController < ApplicationController
   def show
   end
   
-  def  
+ 
     
   end
 end

@@ -206,7 +206,6 @@ ja:
       short: "%m/%d %H:%M"
     pm: 午後
 
-ja:
   enums:
     order:
       pay_type:

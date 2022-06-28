@@ -3,11 +3,11 @@
   	<span style="background-color:#f5f5f5">　新規会員登録　</span>
   </h5>
 
-<%= form_with model: @customer, url: new_customer_registration_path, method: :post, local:true do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
-  <div class="row">
-    <%= f.label "名前", class: "col-sm-2 col-form-label" %>
-    <div class="col-sm-10">
+  <%= form_with model: @customer, url: customer_registration_path, method: :post, local: true do |f| %>
+    <%= render "public/shared/error_messages", resource: resource %>
+    <div class="row">
+      <%= f.label "名前", class: "col-sm-2 col-form-label" %>
+      <div class="col-sm-10">
         <%= f.label "(姓)　" %>
         <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
         <%= f.label "(名)　" %>

@@ -27,7 +27,7 @@
         <% @cart_items.each do |cart_item| %>
          <tr>
           <td class="w-60">
-            <%= image_tag @item.get_image size: "20x20" %> <%= cart_item.item.name %>
+            <%= image_tag @item.get_image size: "20x15" %> <%= cart_item.item.name %>
           </td>
           <td class="w-20">
             <%= cart_item.item.price %>
