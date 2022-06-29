@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-3">
-      <!--genreサイドバー挿入予定箇所-->
+      <%= render 'genre_sidebar', genres: @genres %>
     </div>
     <div class="col-9">
       <h2 class="py-4">商品一覧<span><small>(全<%= @items.total_count %>件)</small></span></h2>
@@ -23,4 +23,5 @@
   <div class="text-aline-center">
     <%= paginate @items %>
   </div>
-
+</div>
+</div>

@@ -11,9 +11,9 @@ class Public::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  def create
-    super
-  end
+  # def create
+  #   super
+  # end
 
   # DELETE /resource/sign_out
   # def destroy
@@ -23,15 +23,16 @@ class Public::SessionsController < Devise::SessionsController
   protected
   #退会しているかを判断するメソッド
   def customer_state
-    @customer = Customer.find_by(email :params[:cusomer][:email])
+    @customer = Customer.find_by(email: params[:customer][:email])
     return if !@customer
-    if @customer.valid_password?(params[:customer][:password]) && @customer.is_active == true
-      redirect_to :create
-    else
+    if @customer.valid_password?(params[:customer][:password]) && !@customer.is_active
       redirect_to customer_session_path
+    else
+      redirect_to :create
     end
   end
-
+  
+  
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])

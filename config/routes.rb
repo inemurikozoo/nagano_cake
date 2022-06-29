@@ -22,7 +22,9 @@ Rails.application.routes.draw do
   get 'items/:id'  => 'public/items#show'
   get 'cart_items' => 'public/cart_items#index'
   get 'orders/new' => 'public/orders#new', as: 'new_order'
-
+  get 'customers' => 'public/customers#show', as: 'customer'
+  get 'customers/quit' => 'public/customers#quit'
+  
 #管理者用ルーティング
 
   namespace :admin do
