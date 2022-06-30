@@ -1,6 +1,6 @@
 class Public::CustomersController < ApplicationController
   def show
-    @customer = Customer.find(1)
+    @customer = current_customer
   end
 
   def edit
@@ -8,6 +8,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def quit
+    @customer = current_customer
   end
 
   def exit
@@ -19,7 +20,7 @@ class Public::CustomersController < ApplicationController
 
   def update
     @customer = current_customer
-      if @customer.update(customer.params)
+      if @customer.update(customer_params)
         redirect_to customer_path
       else
         render :edit and return

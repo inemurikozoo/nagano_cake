@@ -1,6 +1,6 @@
 class Public::CartItemsController < ApplicationController
   def index
-    @cart_items = CartItem.([:id])
+    @cart_items = CartItem.(params[:id])
   end
   
   def create

@@ -22,8 +22,12 @@ Rails.application.routes.draw do
   get 'items/:id'  => 'public/items#show'
   get 'cart_items' => 'public/cart_items#index'
   get 'orders/new' => 'public/orders#new', as: 'new_order'
-  get 'customers' => 'public/customers#show', as: 'customer'
+  get 'customers' => 'public/customers#show'
+patch 'customers' => 'public/customers#update'
   get 'customers/quit' => 'public/customers#quit'
+  get 'customers/edit/:id' => 'public/customers#edit', as: 'customer_edit'
+  get 'addresses/:id' => 'public/addresses#index'
+  get 'addresses/:id/edit' => 'public/addresses#edit'
   
 #管理者用ルーティング
 

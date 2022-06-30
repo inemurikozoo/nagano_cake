@@ -1,8 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-3">
-      <%= render 'genre_sidebar', genres: @genres %>
-    </div>
+    <span class="border border-dark">
+      <div class="col-3">
+        <!--ジャンルサイドバー -->
+        <%= render 'genre_sidebar', genres: @genres %>
+      </div>
+    </span>  
     <div class="col-9">
       <h2 class="py-4">商品一覧<span><small>(全<%= @items.total_count %>件)</small></span></h2>
 

@@ -1,18 +1,19 @@
-<table class="table">
-  <tr>
-    <th>
-      <strong>
-        ジャンル検索
-      </strong>
-    </th>
-  </tr>
-  <tr>
-    <td>
-      <% genres.each do |genre| %>
-        <%= link_to genre.name, url:  "#" %>
 
-    </td>
-
-  </tr>
-  <% end %>
-</table>
+  <table class="table">
+    <tbody>
+      <tr>
+        <th>
+          <strong>
+            ジャンル検索
+          </strong>
+        </th>
+      </tr>
+      <tr>
+        <td>
+          <% genres.each do |genre| %>
+            <%= link_to genre.name, url: "#", class: "link-dark" %>
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
