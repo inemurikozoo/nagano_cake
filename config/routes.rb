@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 patch 'customers' => 'public/customers#update'
   get 'customers/quit' => 'public/customers#quit'
   get 'customers/edit/:id' => 'public/customers#edit', as: 'customer_edit'
-  get 'addresses/:id' => 'public/addresses#index'
+  get 'addresses/:id' => 'public/addresses#index', as: 'addresses'
   get 'addresses/:id/edit' => 'public/addresses#edit'
   
 #管理者用ルーティング

@@ -6,8 +6,7 @@
   </h5>
 
   <h5><strong>登録情報</strong></h5>
-  <%= link_to customer_edit_path(current_customer.id), class: "btn btn-sm btn-success" do %>編集する<% end %>
- <div>
+  <%= link_to customer_edit_path(@customer.id), class: "btn btn-success" %>編集する<% end %>
   <table class="table table-bordered border border-secondary py-5">
     <tr>
       <th class="table-secondary">
@@ -38,7 +37,7 @@
         住所
       </th>
       <td>
-        <%= @customer.address %>  
+        <%= @customer.address %>
       </td>
     </tr>
     <tr>
@@ -56,11 +55,11 @@
       <%= @customer.email %>
     </td>
   </table>
-  
+
 <h5><strong>配送先</strong></h5>
 
-<%= link_to "一覧を見る", url: "#", class: 'btn btn-primary' %>
+<%= link_to url: addresses_path, class: 'btn btn-primary' do %>一覧を見る<% end %>
 
 <h5><strong>注文履歴</strong></h5>
 
-<%= link_to "一覧を見る", url: "#", class: 'btn btn-primary' %>
+<%= link_to url: "#", class: 'btn btn-primary' do %>一覧を見る<% end %>

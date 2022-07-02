@@ -18,11 +18,11 @@
         <%= f.select :address  %>
 	   	<%= f.label , "新しいお届け先", {style: "display: inline-block;"} %><br />
       <%= f.label :postal_code, "郵便番号（ハイフンなし）" %>
-      <%= f.text_field :postal_code, autocomplete: "0000000" %>
+      <%= f.text_field :postal_code, placeholder: "0000000" %>
       <%= f.label :address, "住所" %>
-      <%= f.text_field :address, autocomplete: "東京都渋谷区代々木神園町0-0" %>
+      <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0" %>
       <%= f.label :name, "宛名" %>
-      <%= f.text_field :name, autocomplete: "令和道子" %>
+      <%= f.text_field :name, placeholder: "令和道子" %>
     
     
     <% end %>

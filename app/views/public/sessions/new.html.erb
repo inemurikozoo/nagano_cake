@@ -7,18 +7,22 @@
   	<span style="background-color:#f5f5f5">　会員の方はこちらからログイン　</span>
   </p>
 
-<%= form_with scope: :session, url: new_customer_session_path, local: true  do |f| %>
+<%= form_with model: @customer, url: new_customer_session_path, local: true do |f| %>
   <div class="field">
+    <div class="form-group">
     <%= f.label "メールアドレス", class: "col-md-3 col-form-label" %>
     <div class="col-md-9">
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "sol-md-9" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %>
+    </div>
     </div>
   </div>
 
   <div class="field">
+    <div class="form-group">
     <%= f.label "パスワード", class: "col-md-3 col-form-label" %>
     <div class="col-md-9">
       <%= f.password_field :password, autocomplete: "current-password" %>
+    </div>  
   </div>
 
   
@@ -31,4 +35,4 @@
 <p class="pb-4">
   	<span style="background-color:#f5f5f5">　会員登録がお済みでない方　</span>
   </p>
-<p><%= link_to "こちら", url: new_customer_registration_path %> 　から新規登録を行ってください。</p>
+<%= link_to new_customer_registration_path do %>こちら<% end %>から新規登録を行ってください。
