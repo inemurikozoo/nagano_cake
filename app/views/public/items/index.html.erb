@@ -12,14 +12,12 @@
       <div class="container d-flex justify-content-start">
         <% @items.each do |item| %>
         <div class="w-25 px-3">
-          <div class="">
-            <%= image_tag item.get_image, size: "150x150" %>
-            <p><small><strong><%= item.name %></strong></small></p>
+          <% link_to image_tag(item.get_image), item_path(item.id) %>
+          
+            <p><small><strong><%= link_to item.name, url: item_path(item.id) %></strong></small></p>
             <p><small><strong>￥<%= item.price.to_s( :delimited) %></small></strong></p>
-          </div>
+          
         </div>
-      
-
         <% end %>
       </div>
     </div>

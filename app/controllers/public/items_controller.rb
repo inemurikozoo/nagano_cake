@@ -5,7 +5,7 @@ class Public::ItemsController < ApplicationController
   end
 
   def show
-    @genre = Genre.all
+    @genres = Genre.all
     @item = Item.find(params[:id])
   end
 end

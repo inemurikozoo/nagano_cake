@@ -20,4 +20,12 @@ module ApplicationHelper
 	  customer.last_name_kana + customer.first_name_kana
 	end
   
+  #合計金額の計算
+  def total_price(totals)
+    price = 0
+    totals.each do |total|
+      price  +=  sub_price(total)
+    end
+    return price
+  end
 end

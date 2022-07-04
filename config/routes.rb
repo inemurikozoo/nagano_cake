@@ -15,30 +15,47 @@ Rails.application.routes.draw do
   # resources :addresses
 
   # 会員用ルーティング
-  get 'product_details/update'
   get root to: 'public/homes#top'
   get 'about' => 'public/homes#about'
+
   get 'items' => 'public/items#index'
-  get 'items/:id'  => 'public/items#show'
-  get 'cart_items' => 'public/cart_items#index'
-  get 'orders/new' => 'public/orders#new', as: 'new_order'
+  get 'items/:id'  => 'public/items#show', as: 'item'
+
   get 'customers' => 'public/customers#show'
+  get 'customers/edit/:id' => 'public/customers#edit', as: 'customer_edit'
 patch 'customers' => 'public/customers#update'
   get 'customers/quit' => 'public/customers#quit'
-  get 'customers/edit/:id' => 'public/customers#edit', as: 'customer_edit'
+patch 'customers/exit' => 'public/customers#exit'
+
+  get 'cart_items' => 'public/cart_items#index'
+  patch 'cart_items/:id' => 'public/cart_items#update'
+  delete 'cart_items/:id' => 'public/cart_items#destroy'
+  delete 'cart_items' => 'public/cart_items#destroy_all'
+  post 'cart_items' =>  'public/cart_items#create'
+
+  get 'orders/new' => 'public/orders#new', as: 'new_order'
+  post 'orders/confirm' => 'public/orders#confirm'
+  get 'orders/complete' => 'public/orders#complete'
+  post 'orders' => 'public/orders#create'
+  get 'orders' => 'public/orders#index'
+  get 'orders/:id' => 'public/orders#show'
+
   get 'addresses/:id' => 'public/addresses#index', as: 'addresses'
   get 'addresses/:id/edit' => 'public/addresses#edit'
-  
+  post 'addresses' => 'public/addresses#create'
+  patch 'addresses/:id' => 'public/addresses#update'
+  delete 'addresses/:id' => 'public/addresses#destroy'
+
 #管理者用ルーティング
 
   namespace :admin do
+    root :to => 'homes#top'
+    resources :items, only: [:index, :new, :create, :show, :edit, :update]
+    resources :genres, only: [:index, :create, :edit, :update]
+    resources :customers, only: [:index, :show, :edit, :update]
     get 'status/:id' => 'orders#show'
     put 'status/:id/order' => 'orders#update', as: 'order'
     put 'status/:id' => 'product_details#update', as: 'product_details'
-    resources :customers, only: [:index, :show, :edit, :update]
-    resources :genres,    only: [:index, :create, :edit, :update]
-    root :to => 'homes#top'
-    resources :items, only: [:index, :new, :create, :show, :edit, :update]
   end
 
 

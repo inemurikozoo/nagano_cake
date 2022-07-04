@@ -12,7 +12,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def update
-    @customer = current_customer
+    @customer = Customer.find(params[:id])
       if @customer.update(customer_params)
         redirect_to customer_path
       else
