@@ -30,7 +30,7 @@ patch 'customers/exit' => 'public/customers#exit'
   get 'cart_items' => 'public/cart_items#index'
   patch 'cart_items/:id' => 'public/cart_items#update'
   delete 'cart_items/:id' => 'public/cart_items#destroy'
-  delete 'cart_items' => 'public/cart_items#destroy_all'
+  delete 'cart_items' => 'public/cart_items#destroy_all', as: 'destroy_all'
   post 'cart_items' =>  'public/cart_items#create'
 
   get 'orders/new' => 'public/orders#new', as: 'new_order'

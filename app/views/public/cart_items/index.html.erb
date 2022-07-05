@@ -1,19 +1,19 @@
 <div class="col-md-11 mx-auto mt-5">
   <h5 class="pb-4">
     <div class="row">
-      <div class="col-3">
+      <div class="col-4">
   	    <span style="background-color:#f5f5f5">
   	   　ショッピングカート　
   	    </span>
   	  </div>
-  	  <div class="col-3 offset-6">
-  	    "カートを空にする"
+  	  <div class="col-4 offset-4 pull-right">
+  	    <%= link_to "カートを空にする", destroy_all_path, class:"btn btn-danger btn-sm" %>
   	  </div>
   	</div>
   </h5>
 
   <div class="row">
-    <table class="table table-hover px-auto">
+    <table class="table table-bordered border-dark table-hover px-auto">
       <thead class="thead-light">
         <tr>
           <th>商品名</th>
@@ -27,10 +27,10 @@
         <% @cart_items.each do |cart_item| %>
          <tr>
           <td class="w-60">
-            <%= image_tag @item.get_image size: "20x15" %> <%= cart_item.item.name %>
+            <%= image_tag(cart_item.item.image, size: "80x50") %> <%= cart_item.item.name %>
           </td>
           <td class="w-20">
-            <%= cart_item.item.price %>
+            <%= cart_item.item.price.to_s(:delimited) %>
           </td>
           <td class="w-20">
             <%= form_with model: @cart_item, method: :patch do |f| %>
@@ -39,10 +39,10 @@
             <% end %>
           </td>
           <td class="w-20">
-            <%= cart_item.item.price * cart_item.amount %>
+            <%= (cart_item.item.price * cart_item.amount).to_s(:delimited) %>
           </td>
           <td class="w-20">
-            <%= link_to "削除する", url: items_path,  class:"btn btn-danger btn-sm" %> <!--仮のpathです-->
+            <%= link_to "削除する", items_path, class:"btn btn-danger btn-sm" %> <!--仮のpathです-->
           <% end %>
           </td>
         </tr>
@@ -50,11 +50,11 @@
     </table>
 
       <div class="row">
-        <div class="col">
-          <%= link_to url: items_path, class:"btn btn-primary" do %>買い物を続ける<% end %>
+        <div class="col-4">
+          <%= link_to "買い物を続ける", items_path, class:"btn btn-primary" %>
         </div>
-        <div class="col pull-right">
-          <table class="table table-hover px-auto">
+        <div class="col-4 offset-md-4">
+          <table class="table table-bordered table-hover px-auto">
             <thead class="thead-light">
               <tr>
                 <td>
@@ -68,10 +68,10 @@
           </table>
         </div>
       </div>
-
-      <div class="col-md-4 col-md--offset- text-center">
-        <% link_to url: new_order_path, method: :post, class:"btn btn-success" do %>情報入力に進む<% end %>
-
+    <div class="row">
+      <div class="col-md-4 text-center">
+        <% link_to "情報入力に進む", new_order_path, method: :post, class:"btn btn-success" %>
       </div>
+    </div>
     </div>
   </div>

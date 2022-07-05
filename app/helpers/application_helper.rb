@@ -6,8 +6,8 @@ module ApplicationHelper
   end
 
 # 税込み小計の計算
-  def subtotal(sub)
-    ( tax_in_price(sub.price) *  sub.amount )
+  def sub_total(sub)
+    ( tax_in_price(sub.item.price) *  sub.amount )
   end
 
 
@@ -24,8 +24,10 @@ module ApplicationHelper
   def total_price(totals)
     price = 0
     totals.each do |total|
-      price  +=  sub_price(total)
+      price += sub_total(total)
     end
     return price
   end
+  
+  
 end
