@@ -1,7 +1,7 @@
 class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
-    @address = Address.all
+    @address = Address.where(customer: current_customer)
   end
 
   def complete
@@ -13,7 +13,4 @@ class Public::OrdersController < ApplicationController
   def show
   end
   
- 
-    
-  end
 end

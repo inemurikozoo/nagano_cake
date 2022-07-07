@@ -6,12 +6,8 @@ class Public::CartItemsController < ApplicationController
   end
 
   def update
-    
+    @cart_item.update(cart_item_params)
   end
-
-
-
-
 
   #カートに商品を追加・保存
   def create
@@ -33,16 +29,16 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destroy
-    # @cart_item = CartItem.find([:id])
-    # @cart_teim.destroy
-    # redirect_to
+    @cart_item = CartItem.find([:id])
+    @cart_item.destroy
+    redirect_to
   end
 
   def destroy_all
-  # @cart_items = current_customer.cart_items
-  # @cart_items.destroy_all
-  # flash[:alert] = "カートの商品をすべて削除しました"
-  # redirect_to customers_cart_items_path
+  @cart_items = current_customer.cart_items
+  @cart_items.destroy_all
+  flash[:alert] = "カートの商品をすべて削除しました"
+  redirect_to customers_cart_items_path
   end
 
 

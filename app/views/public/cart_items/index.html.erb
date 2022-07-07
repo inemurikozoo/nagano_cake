@@ -26,29 +26,30 @@
       <tbody>
         <% @cart_items.each do |cart_item| %>
          <tr>
-          <td class="w-60">
-            <%= image_tag(cart_item.item.image, size: "80x50") %> <%= cart_item.item.name %>
+          <td class="w-60"><!-- 商品名-->
+            <%= image_tag(cart_item.item.image, size: "80x50") %>
+            <%= cart_item.item.name %>
+          </td>
+          <td class="w-20"><!-- 単価（税込）-->
+            <%= cart_item.item.tax_in_price.to_s(:delimited) %>
+          </td>
+          <td class="w-20"><!-- 数量-->
+              <%= form_with model: @cart_item, method: :patch do |f| %>
+                <%= f.select :amount, options_for_select((1..10).to_a) %>
+                <%= f.submit "変更", class:"btn btn-success btn-sm" %>
+              <% end %>
+          </td>
+          <td class="w-20"><!-- 小計-->
+            <%= sub_total(cart_item) %>
           </td>
           <td class="w-20">
-            <%= cart_item.item.price.to_s(:delimited) %>
-          </td>
-          <td class="w-20">
-            <%= form_with model: @cart_item, method: :patch do |f| %>
-              <%= f.select :amount, options_for_select((1..10).to_a) %>
-              <%= f.submit "変更", class:"btn btn-success btn-sm" %>
-            <% end %>
-          </td>
-          <td class="w-20">
-            <%= (cart_item.item.price * cart_item.amount).to_s(:delimited) %>
-          </td>
-          <td class="w-20">
-            <%= link_to "削除する", items_path, class:"btn btn-danger btn-sm" %> <!--仮のpathです-->
+            <%= link_to "削除する", cart_items_path(cart_item), method: :delete, class:"btn btn-danger btn-sm" %>
           <% end %>
           </td>
         </tr>
       </tbody>
     </table>
-
+  </div>
       <div class="row">
         <div class="col-4">
           <%= link_to "買い物を続ける", items_path, class:"btn btn-primary" %>
@@ -58,10 +59,12 @@
             <thead class="thead-light">
               <tr>
                 <td>
-                  合計金額
+                  <strong>
+                    合計金額
+                  </strong>
                 </td>
                 <td>
-                  ¥<%= total_price(@cart_items).to_s(:delimited) %>
+                  <%= total_price(@cart_items).to_s(:delimited) %>
                 </td>
               </tr>
             </thead>
@@ -69,9 +72,9 @@
         </div>
       </div>
     <div class="row">
-      <div class="col-md-4 text-center">
+      <div class="text-center">
         <% link_to "情報入力に進む", new_order_path, method: :post, class:"btn btn-success" %>
       </div>
     </div>
-    </div>
+    
   </div>
