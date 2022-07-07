@@ -12,10 +12,7 @@ class Item < ApplicationRecord
     image
   end
   
-   # 税込単価の計算
-  def tax_in_price(price)
-    (price * 1.1).floor
-  end
+  
   
 
 

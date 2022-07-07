@@ -3,6 +3,7 @@
 <div class="container pt-4">
   <div class="row">
     <div class="col-3">
+      <% if current_customer.cart_items.present? %>
       <!--ジャンルサイドバー-->
       <%= render 'genre_sidebar', genres: @genres %>
     </div>

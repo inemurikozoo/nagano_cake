@@ -10,7 +10,21 @@ module ApplicationHelper
 	  customer.last_name_kana + customer.first_name_kana
 	end
   
+  def my_address
+    "〒" + current_customer.postal_code + current_customer.address + current_customer.last_name + current_customer.first_name
+  end
   
+ 
+  
+   # 税込単価の計算
+  def tax_in_price(price)
+    (price * 1.1).floor
+  end
+  
+  # 税込み小計の計算
+  def sub_total(sub)
+    (tax_in_price(sub.item.price) * sub.amount)
+  end
   
   
     #合計金額の計算
@@ -20,6 +34,10 @@ module ApplicationHelper
       price += sub_total(total)
     end
     return price
+  end
+  
+  def billing(order)
+    total_price(current_customer.cart_items) + order
   end
 
 end

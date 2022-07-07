@@ -2,11 +2,14 @@ class Public::CartItemsController < ApplicationController
   before_action :authenticate_customer!
   
   def index
-    @cart_items = current_customer.cart_items.all
+    @cart_items = current_customer.cart_items
   end
 
   def update
-    @cart_item.update(cart_item_params)
+    @cart_item.update(amount: params[:cart_item][:amount].to_i)
+    # @price = sub_total(@cart_item).to_s(:delimited)
+    @cart_items = current_customer.cart_items
+    # @total = total_price(@cart_items).to_s(:delimited)
   end
 
   #カートに商品を追加・保存

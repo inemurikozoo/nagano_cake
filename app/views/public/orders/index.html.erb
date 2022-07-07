@@ -1,2 +1,68 @@
-<h1>Public::Orders#index</h1>
-<p>Find me in app/views/public/orders/index.html.erb</p>
+<div class="col-md-11 mx-auto mt-5">
+  <h5 class="pb-4">
+    <div class="row">
+      <div class="col-4">
+  	    <span style="background-color:#f5f5f5">
+  	  　 　注文履歴詳細　　
+  	    </span>
+  	  </div>
+  	</div>
+  </h5>
+  
+  <div class="row">
+    <h6><strong>注文情報</strong></h6>
+    <table class="table table-bordered border-dark table-hover px-auto">
+      <thead class="thead-light">
+        <tr>
+          <th>注文日</th>
+          <td></td>
+        </tr>
+        <tr>  
+          <th>配送先</th>
+          <td></td>
+        </tr>
+        <tr>
+          <th>支払方法</th>
+          <td></td>
+        </tr>
+        <tr>
+          <th>ステータス</th>
+          <td></td>
+        </tr>
+      </thead>
+    </table>
+    <h6><strong>請求情報</strong></h6>
+    <table class="table table-bordered border-dark table-hover px-auto">
+      <thead class="thead-light">
+        <tr>
+          <th>商品合計</th>
+          <td></td>
+        </tr>
+        <tr>  
+          <th>配送料</th>
+          <td></td>
+        </tr>
+        <tr>
+          <th><strong>ご請求額</strong></th>
+          <td></td>
+        </tr>
+  </div>
+    <div class="row">
+      <div class="col-4">
+        <h6><strong>注文内容</strong></h6>
+        <table class="table table-bordered border-dark table-hover px-auto">
+          <thead class="thead-light">
+            <tr>
+              <th>商品合計</th>
+              <th>単価（税込）</th>
+              <th>個数</th>
+              <th>小計</th>
+            </tr>
+            <tr>
+              <%  each do |order| %>
+              <td><%= .name %></td>
+              <td><%= .price %></td>
+              <td><%= order.amount %></td>
+              <td><%= %></td>
+            </tr>
+  </div>
