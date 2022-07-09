@@ -6,7 +6,7 @@
     <!-- カートにアイテムが存在しているかを判断　-->
   <% if current_customer.cart_items.present? %>
   </h5>
-    <%= form_with model: @order, method: :post, url: new_order_path, method: :post, local: true do |f| %>
+    <%= form_with model: @order, url: orders_confirm_path, method: :post, local: true do |f| %>
       <strong>支払方法</strong><br />
       <%= f.radio_button :pay_type, '0' %>
 	   	<%= f.label :pay_type, "クレジットカード", {value: '0', style: "display: inline-block;"} %><br />

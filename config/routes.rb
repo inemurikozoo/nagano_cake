@@ -35,16 +35,16 @@ patch 'customers/exit' => 'public/customers#exit'
 
   get 'orders/new' => 'public/orders#new', as: 'new_order'
   post 'orders/confirm' => 'public/orders#confirm'
-  get 'orders/complete' => 'public/orders#complete'
+  get 'orders/complete' => 'public/orders#complete', as: 'order_complete'
   post 'orders' => 'public/orders#create'
   get 'orders' => 'public/orders#index'
   get 'orders/:id' => 'public/orders#show'
 
   get 'addresses/:id' => 'public/addresses#index', as: 'addresses'
-  get 'addresses/:id/edit' => 'public/addresses#edit'
-  post 'addresses' => 'public/addresses#create'
+  get 'addresses/:id/edit' => 'public/addresses#edit', as: 'addresses_edit'
+  post 'addresses' => 'public/addresses#create', as: 'addresses_create'
   patch 'addresses/:id' => 'public/addresses#update'
-  delete 'addresses/:id' => 'public/addresses#destroy'
+  delete 'addresses/:id' => 'public/addresses#destroy', as: 'addresses_destroy'
 
 #管理者用ルーティング
 

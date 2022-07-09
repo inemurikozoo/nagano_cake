@@ -4,7 +4,62 @@ class Public::OrdersController < ApplicationController
     @address = Address.where(customer: current_customer)
   end
 
+def confirm
+    @cart_items = current_customer.cart_items
+    @order = Order.new(
+      customer: current_customer,
+      pay_type: params[:order][:pay_type])
+    
+    @order.total_price = billing(@order)
+    
+    if params[:order][:addresses] == "my_address"
+      @order.postal_code = current_customer.postal_code
+      @order.address     = current_customer.address
+      @order.name        = current_customer.last_name + current_customer.first_name
+      
+    elsif params[:order][:addresses] == "shipping_addresses"
+      ship = Address.find(params[:order][:address_id])
+      @order.postal_code = ship.postal_code
+      @order.address     = ship.address
+      @order.name        = ship.name
+      
+    elsif params[:order][:addresses] == "new_addresses"
+      @order.postal_code = params[:order][:postal_code]
+      @order.address     = params[:order][:address]
+      @order.name        = params[:order][:name]
+      @ship = "new"
+      
+      unless @order.valid? == true
+        @shipping_addresses = Address.where(customer: current_customer)
+        render :new
+      end
+    end
+end
+  
   def complete
+  end
+
+  def create
+    @order = current_customer.orders.new(order_params)
+    @order.save
+    flash[:notice] = "ご注文が完了しました。"
+    redirect_to order_complete_path
+    
+    if params[:order][:ship] == "new"
+      current_customer.address.create(address_params)
+    end
+    
+    @cart_items = current_customer.cart_items
+    @cart_items.each do |cart_item|
+      OrderItem.create(
+        item: cart_item.item,
+        order: @order,
+        amount: cart_item.amount,
+        price: sub_total(cart_item)
+        )
+    end
+    #注文が確定したらカートを空にする
+    @cart_items.destroy_all
   end
 
   def index
@@ -13,13 +68,12 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @order_items = @order.order_items
   end
-  
-  def confirm
-    @cart_items = current_customer.cart_items
-    @order = Order.new(
-      customer: current_customer,
-      pay_type: params[:order][:pay_type])
+
+private
+  def order_params
+    params.require(:order).permit(:postal_code, :address, :name, :pay_type, :payment_amount)
   end
-  
+
 end

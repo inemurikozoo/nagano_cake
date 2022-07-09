@@ -12,6 +12,19 @@ class Public::CartItemsController < ApplicationController
     # @total = total_price(@cart_items).to_s(:delimited)
   end
 
+  def destroy
+    @cart_item = CartItem.find([:id])
+    @cart_item.destroy
+    redirect_to
+  end
+
+  def destroy_all
+  @cart_items = current_customer.cart_items
+  @cart_items.destroy_all
+  flash[:alert] = "カートの商品をすべて削除しました"
+  redirect_to customers_cart_items_path
+  end
+
   #カートに商品を追加・保存
   def create
     @cart_item = CartItem.new(cart_item_params)
@@ -30,20 +43,6 @@ class Public::CartItemsController < ApplicationController
       render 'index', alert: 'カートに商品を追加できませんでした'
     end
   end
-
-  def destroy
-    @cart_item = CartItem.find([:id])
-    @cart_item.destroy
-    redirect_to
-  end
-
-  def destroy_all
-  @cart_items = current_customer.cart_items
-  @cart_items.destroy_all
-  flash[:alert] = "カートの商品をすべて削除しました"
-  redirect_to customers_cart_items_path
-  end
-
 
   private
   

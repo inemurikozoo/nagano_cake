@@ -1,9 +1,6 @@
-
-
 <div class="container pt-4">
   <div class="row">
     <div class="col-3">
-      <% if current_customer.cart_items.present? %>
       <!--ジャンルサイドバー-->
       <%= render 'genre_sidebar', genres: @genres %>
     </div>
@@ -14,16 +11,15 @@
       <h2><strong><%= @item.name %></strong></h2>
 
       <p><%= @item.introduction %></p>
-      
-      <h5><strong>￥<%= @item.price.to_s( :delimited) %></strong><small>（税込）</small></h5>
-      
-      <%= form_with model: @cart_item, url: cart_items_path, local: true do |f| %>
-        <%= f.hidden_field :item_id, :value => @item.id %>
-        
-        <%= f.select :amount, options_for_select((1..10).to_a), include_blank: "個数選択" %>
-        <%= f.submit "カートに入れる", class:"btn btn-success" %>
-      <% end %>
-    </div>
 
+      <h5><strong>￥<%= @item.price.to_s( :delimited) %></strong><small>（税込）</small></h5>
+
+        <%= form_with model: @cart_item, url: cart_items_path, local: true do |f| %>
+          <%= f.hidden_field :item_id, :value => @item.id %>
+
+          <%= f.select :amount, options_for_select((1..10).to_a), include_blank: "個数選択" %>
+          <%= f.submit "カートに入れる", class:"btn btn-success" %>
+        <% end %>
+    </div>
   </div>
 </div>

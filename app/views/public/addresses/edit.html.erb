@@ -1,20 +1,39 @@
-<div class="col-md-11 mx-auto mt-5">
+<div class="container">
+<div class="col-md-12 mx-auto mt-5">
   <h5 class="pb-4">
     <span style="background-color:#f5f5f5">
       配送先編集
     </span>
   </h5>
   
-  <%= form_with model: @address, method: :patcht do |f| %>
-    <%= f.label :postal_code, "郵便番号(ハイフンなし)"%>
-    <%= f.text_field :postal_code %>
-    
-    <%= f.label :address %>
-    <%= f.text_field :address %>
-    
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-    
-    <%= f.submit "変更内容を保存" %>
+  <div class="row">
+    <div class="col-md-3">
+      <%= form_with model: @address, url: addresses_path(@address.id), method: :patch do |f| %>
+      <small><%= f.label :postal_code, "郵便番号(ハイフンなし)" %></small>
+    </div>
+    <div class="col-md-6">
+      <%= f.text_field :postal_code %>
+    </div>  
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <%= f.label :address, "住所" %>
+    </div>
+    <div class="col-md-6">
+      <%= f.text_field :address, size:"50" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <%= f.label :name, "宛名" %>
+    </div>
+    <div class="col-md-6">
+      <%= f.text_field :name %>
+    </div>
+    <div class="col-md-3">
+      <%= f.submit "変更内容を保存", class:"btn btn-success btn-sm" %>
+    </div>
+  </div>
   <% end %>
+</div>
   
