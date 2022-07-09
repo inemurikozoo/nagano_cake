@@ -13,21 +13,20 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destroy
-    @cart_item = CartItem.find([:id])
+    @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
-    redirect_to
+    redirect_to cart_items_path
   end
 
   def destroy_all
-  @cart_items = current_customer.cart_items
-  @cart_items.destroy_all
-  flash[:alert] = "カートの商品をすべて削除しました"
-  redirect_to customers_cart_items_path
+    @cart_items = current_customer.cart_items
+    @cart_items.destroy_all
+    redirect_to cart_items_path
   end
 
   #カートに商品を追加・保存
   def create
-    @cart_item = CartItem.new(cart_item_params)
+    @cart_item = CartItem.new
     @cart_item.customer_id = current_customer.id
     #カートに同じ商品が存在するかを同じidが存在するかどうかで判断
     if current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id]).present?

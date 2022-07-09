@@ -19,17 +19,19 @@ class Public::AddressesController < ApplicationController
   end
 
   def update
-
+    address = Address.find(params[:id])
+    address.update(address_params)
+    redirect_to addresses_path(current_customer.id)
   end
 
   def destroy
-
+    address = Address.find(params[:id])
+    address.destroy
+    redirect_to addresses_path(current_customer.id), notice: "配送先を削除しました"
   end
-
   private
 
   def address_params
     params.require(:address).permit(:postal_code, :address, :name, :customer_id)
-
   end
 end

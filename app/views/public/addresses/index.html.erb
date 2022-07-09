@@ -32,7 +32,7 @@
       <%= f.text_field :name, placeholder:"令和道子" %>
     </div>
     <div class="col-md-2">
-      <%= f.submit "新規登録", class:"btn btn-success" %>
+      <%= f.submit "新規登録", class:"btn btn-sm btn-success" %>
     </div>
   </div>
   <% end %>
@@ -63,8 +63,8 @@
             <%= address.name %>
           </td>
           <td class="w-50">
-            <%= link_to "編集する", addresses_edit_path, class:"btn btn-success" %>
-            <%= link_to "削除する", addresses_destroy_path, class:"btn btn-danger" %>
+            <%= link_to "編集する", addresses_edit_path, class:"btn btn-sm btn-success" %>
+            <%= link_to "削除する", addresses_destroy_path, method: :delete, class:"btn btn-sm btn-danger", data: {confirm: "削除します。よろしいですか？"} %>
             </td>
          </tr>
         <% end %>

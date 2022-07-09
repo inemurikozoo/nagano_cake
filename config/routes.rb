@@ -23,13 +23,13 @@ Rails.application.routes.draw do
 
   get 'customers' => 'public/customers#show'
   get 'customers/edit/:id' => 'public/customers#edit', as: 'customer_edit'
-patch 'customers' => 'public/customers#update'
+patch 'customers' => 'public/customers#update', as: 'customer_update'
   get 'customers/quit' => 'public/customers#quit'
 patch 'customers/exit' => 'public/customers#exit'
 
   get 'cart_items' => 'public/cart_items#index'
   patch 'cart_items/:id' => 'public/cart_items#update'
-  delete 'cart_items/:id' => 'public/cart_items#destroy'
+  delete 'cart_items/:id' => 'public/cart_items#destroy', as: 'destroy'
   delete 'cart_items' => 'public/cart_items#destroy_all', as: 'destroy_all'
   post 'cart_items' =>  'public/cart_items#create'
 
@@ -43,7 +43,7 @@ patch 'customers/exit' => 'public/customers#exit'
   get 'addresses/:id' => 'public/addresses#index', as: 'addresses'
   get 'addresses/:id/edit' => 'public/addresses#edit', as: 'addresses_edit'
   post 'addresses' => 'public/addresses#create', as: 'addresses_create'
-  patch 'addresses/:id' => 'public/addresses#update'
+  patch 'addresses/:id' => 'public/addresses#update', as: 'addresses_update'
   delete 'addresses/:id' => 'public/addresses#destroy', as: 'addresses_destroy'
 
 #管理者用ルーティング

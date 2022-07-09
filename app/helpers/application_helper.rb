@@ -10,9 +10,6 @@ module ApplicationHelper
 	  customer.last_name_kana + customer.first_name_kana
 	end
   
-  def my_address
-    "〒" + current_customer.postal_code + current_customer.address + current_customer.last_name + current_customer.first_name
-  end
   
  
   
@@ -37,7 +34,7 @@ module ApplicationHelper
   end
   
   def billing(order)
-    total_price(current_customer.cart_items) + order
+    total_price(current_customer.cart_items) + order.postage
   end
 
 end

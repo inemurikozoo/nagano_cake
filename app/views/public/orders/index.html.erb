@@ -3,12 +3,13 @@
     <div class="row">
       <div class="col-4">
   	    <span style="background-color:#f5f5f5">
-  	  　 　注文履歴一覧
+  	  　 　注文履歴一覧　
   	    </span>
   	  </div>
   	</div>
   </h5>
 
+<% if @orders.present? %>
   <div class="row">
     <table class="table table-bordered border-dark table-hover px-auto">
       <thead class="thead-light">
@@ -32,7 +33,7 @@
             <%= order.name %>
           </td>
           <td class="w-20"><!-- 注文商品-->
-            <%= @order_items each do |order_item| %>
+            <% order.order_items each do |order_item| %>
               <%= order_item.item.name %>
             <% end %>
           </td>
@@ -50,5 +51,8 @@
         </tr>
       </tbody>
     </table>
+  <% else %>
+    <p>注文履歴はありません</p>
+  <% end %>
   </div>
 </div>
