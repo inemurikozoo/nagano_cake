@@ -27,28 +27,28 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <div class="d-flex justify-content-end">
 
-                <ul class="navbar">
+                <ul class="navbar list-unstyled">
                 <div class="d-md-inline">
               <!--  会員のログイン時に表示されるメニュー　-->
 
                 <% if customer_signed_in? %>
                   <div class="btn-group ms-2">
-                  <li class="header-customer-name">
-                  ようこそ、<%= current_customer.last_name %>さん！
-                </li>
-                <li class="nav-item ">
-                  <%= link_to customers_path(current_customer.id), class: 'nav-link' do %>マイページ<% end %><!--会員マイページ-->
-                </li>
-                <li class="nav-item">
-                  <%= link_to items_path, class: 'nav-link' do %>商品一覧<% end %><!--会員用の商品一覧ページ-->
-                </li>
-                <li class="nav-item">
-                  <%= link_to cart_items_path, class: 'nav-link' do %>カート<% end %><!--会員のカート-->
-                </li>
-                <li class="nav-item">
-                  <%= link_to destroy_customer_session_path, class: 'nav-link' do %>ログアウト<% end %>
-                </li>
-                </div>
+                    <li class="header-customer-name">
+                      ようこそ、<%= current_customer.last_name %>さん！
+                    </li>
+                    <li class="nav-item btn btn-outline-secondary rounded">
+                      <%= link_to customers_path(current_customer.id), class: 'nav-link' do %>マイページ<% end %><!--会員マイページ-->
+                    </li>
+                    <li class="nav-item">
+                      <%= link_to items_path, class: 'nav-link' do %>商品一覧<% end %><!--会員用の商品一覧ページ-->
+                    </li>
+                    <li class="nav-item">
+                      <%= link_to cart_items_path, class: 'nav-link' do %>カート<% end %><!--会員のカート-->
+                    </li>
+                    <li class="nav-item">
+                      <%= link_to destroy_customer_session_path, class: 'nav-link' do %>ログアウト<% end %>
+                    </li>
+                  </div>
                   <!--　管理者のログイン時に表示されるメニュー　-->
                 <% elsif admin_signed_in? %>
 
