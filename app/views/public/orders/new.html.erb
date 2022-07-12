@@ -7,6 +7,7 @@
   <% if current_customer.cart_items.present? %>
   </h5>
     <%= form_with model: @order, url: orders_confirm_path, method: :post, local: true do |f| %>
+      
       <strong>支払方法</strong><br />
       <%= f.radio_button :pay_type, Order.pay_types.key(0) %>
 	   	<%= f.label :pay_type, Order.pay_types_i18n[:credit_card] %><br />
@@ -14,16 +15,21 @@
 	   	<%= f.label :pay_type, Order.pay_types_i18n[:transfer] %><br />
 
       <strong>お届け先</strong><br />
-      <%= f.radio_button :address, "my_addresses" %>
+      <!-- 顧客の住所-->
+      <%= f.radio_button :addresses, "my_addresses" %>
 	   	<%= f.label :address, "ご自身の住所", {style: "display: inline-block;"} %><br />
 	   	&emsp;&emsp;<%= "〒" + "#{ current_customer.postal_code} #{current_customer.address}" %><br>
 	   	&emsp;&emsp;<%= "#{ current_customer.last_name} #{current_customer.first_name}" %>
 	   	<% if @address != [] %><br />
-	   	 <%= f.radio_button :address, "shipping_addresses" %>
+	   	
+	   	<!--別途登録した住所 -->
+	   	 <%= f.radio_button :addresses, "shipping_addresses" %>
 	   	 <%= f.label :address, "登録済み住所から選択", {style: "display: inline-block;"} %><br />
       &emsp;&emsp;<%= f.select :address_id, options_from_collection_for_select(Address.all,:id, :address_display) %><br />
       <% end %>
-      <%= f.radio_button :address, "new_address" %>
+      
+      <!--新しいお届け先 -->
+      <%= f.radio_button :addresses, "new_addresses" %>
 	   	<%= f.label :address, "新しいお届け先", {style: "display: inline-block;"} %><br />
       &emsp;&emsp;<%= f.label :postal_code, "郵便番号（ハイフンなし）" %>
                   <%= f.text_field :postal_code, placeholder: "0000000" %><br />
@@ -33,8 +39,11 @@
                   <%= f.text_field :name, placeholder: "令和道子" %><br />
 
       <%= f.submit "確認画面へ進む", class:"btn btn-primary" %>
+      
     <% end %>
+    
   <% else %>
+  
     <!-- カートにアイテムが存在しない場合の処理　-->
       <p>ショッピングカートの中身が空です。</p>
       <p><%= link_to "こちら",items_path %>から商品をカートに追加してください。</p>

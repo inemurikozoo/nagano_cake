@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  patch 'customers' => 'public/customers#update', as: 'customer_update'
   #   #会員用
   devise_for :customers, skip: [:passwords], controllers: {
     registrations: 'public/registrations',
@@ -23,14 +24,14 @@ Rails.application.routes.draw do
 
   get 'customers' => 'public/customers#show'
   get 'customers/edit/:id' => 'public/customers#edit', as: 'customer_edit'
-patch 'customers' => 'public/customers#update', as: 'customer_update'
+
   get 'customers/quit' => 'public/customers#quit'
 patch 'customers/exit' => 'public/customers#exit'
 
   get 'cart_items' => 'public/cart_items#index'
-  patch 'cart_items/:id' => 'public/cart_items#update'
-  delete 'cart_items/:id' => 'public/cart_items#destroy', as: 'destroy'
-  delete 'cart_items' => 'public/cart_items#destroy_all', as: 'destroy_all'
+  patch 'cart_items/:id' => 'public/cart_items#update', as: 'cart_item_update'
+  delete 'cart_items/:id' => 'public/cart_items#destroy', as: 'cart_item_destroy'
+  delete 'cart_items' => 'public/cart_items#destroy_all', as: 'cart_item_destroy_all'
   post 'cart_items' =>  'public/cart_items#create'
 
   get 'orders/new' => 'public/orders#new', as: 'new_order'

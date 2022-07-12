@@ -1,30 +1,32 @@
-<div class="container">
-  <div class="row">
-    <span class="border border-dark">
+<div class="container pt-4">
+  <div class="row pt-5">
+
       <div class="col-3">
         <!--ジャンルサイドバー -->
         <%= render 'genre_sidebar', genres: @genres %>
       </div>
-    </span>  
+    </span>
     <div class="col-9">
       <h2 class="py-4">商品一覧<span><small>(全<%= @items.total_count %>件)</small></span></h2>
 
-      <div class="container d-flex justify-content-start">
+      <div class="container d-flex flex-wrap justify-content-start">
         <% @items.each do |item| %>
-        <div class="w-150 px-3">
-          
+        <div class="w-25 px-3">
+
           <%= link_to image_tag(item.get_image), item_path(item.id) %>
-          
+
             <p><small><strong><%= link_to item.name, item_path(item.id) %></strong></small></p>
             <p><small><strong>￥<%= item.price.to_s( :delimited) %></small></strong></p>
-          
+
         </div>
         <% end %>
       </div>
     </div>
-    <div class="row">
-      <div class="text-aline-center">
-        <%= paginate @items %>
-      </div>
+  </div>
+
+
+    <div class="d-flex justify-content-center">
+      <%= paginate @items %>
     </div>
+
 </div>

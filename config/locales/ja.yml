@@ -223,3 +223,8 @@ ja:
         waiting: "製作待ち"
         producting: "製作中"
         complete: "製作完了"
+  views:
+    pagination:
+      truncate: " "
+      next: "Next >"
+      last: "Last >>"

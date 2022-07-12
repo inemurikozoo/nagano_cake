@@ -1,19 +1,23 @@
 class Public::CartItemsController < ApplicationController
   before_action :authenticate_customer!
-  
+
   def index
     @cart_items = current_customer.cart_items
+
   end
 
   def update
-    @cart_item.update(amount: params[:cart_item][:amount].to_i)
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.update(amount: params[:cart_item][:amount])
     # @price = sub_total(@cart_item).to_s(:delimited)
     @cart_items = current_customer.cart_items
     # @total = total_price(@cart_items).to_s(:delimited)
+    redirect_to cart_items_path, notice: 'カート内アイテムの数量を変更しました。'
+
   end
 
   def destroy
-    @cart_item = CartItem.find([:id])
+    @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
     redirect_to cart_items_path
   end
@@ -27,7 +31,7 @@ class Public::CartItemsController < ApplicationController
   #カートに商品を追加・保存
   def create
     if params[:cart_item][:amount] == ""
-      redirect_to create 
+      redirect_to create
       flash[:alert] = "数量を入力してください"
     else
         @cart_item = CartItem.new(cart_item_params)
@@ -49,7 +53,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   private
-  
+
   def cart_item_params
     params.require(:cart_item).permit(:item_id, :amount)
   end

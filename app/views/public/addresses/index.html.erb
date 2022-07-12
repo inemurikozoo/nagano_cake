@@ -31,7 +31,7 @@
     <div class="col-md-4">
       <%= f.text_field :name, placeholder:"令和道子" %>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-2 pt-4">
       <%= f.submit "新規登録", class:"btn btn-sm btn-success" %>
     </div>
   </div>
@@ -40,8 +40,8 @@
   <!-- 配送先が登録されているかを判断する　-->
   <% if current_customer.addresses.present? %>
 
-  <div class="row">
-    <table class="table table-hover table-bordered px-auto">
+  <div class="row pt-5">
+    <table class="table table-hover table-bordered">
         <thead class="thead-light">
           <tr>
             <th>郵便番号</th>
