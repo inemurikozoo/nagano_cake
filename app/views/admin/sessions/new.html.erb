@@ -1,13 +1,15 @@
 <div class="container-fluid">
 
-<%= form_with scope: :session, url: admin_session_path, local: true do |f| %>
+<!--<%= form_for(resource, as: resource_name, url: admin_session_path) do |f| %>-->
+<%= form_with model: Admin.new, url: admin_session_path, method: :post, local: true do |f| 
+
   <div class="col-md-10 mx-auto mt-5">
   <h5 class="head-line pb-4">
     <span style="background-color:#f5f5f5">　管理者ログイン　</span>
   </h5>
-  
+
   <div class="field">
-    <form class="form-horizonal">
+
     <div class="form-group">
     <%= f.label :email, "メールアドレス　　" %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %>
@@ -15,12 +17,11 @@
   </div>
 
   <div class="field">
-    
+
     <div class="form-group">
     <%= f.label :password, "パスワード　　　　" %>
     <%= f.password_field :password, autocomplete: "current-password" %>
     </div>
-    </form>
   </div>
 
   <!--<% if devise_mapping.rememberable? %>-->
@@ -36,5 +37,5 @@
   <% end %>
   </div>
   <%= render "admin/shared/links" %>
-  
+
   </div>

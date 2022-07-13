@@ -12,7 +12,6 @@
   </head>
 
   <div class="container-fluid">
-
     <body>
       <header class="shadow-sm">
         <nav class="navbar navbar-expand-lg navbar-light">
@@ -52,78 +51,74 @@
                           </li>
                         </ul>
                       </div>
-
+                    </div>
+                  </div>
                   <!--　管理者のログイン時に表示されるメニュー　-->
                 <% elsif admin_signed_in? %>
                 <div class="col-md-4">
                 </div>
-                <li class="nav-item btn btn-outline-secondary rounded btn-sm">
-                  <%= link_to admin_items_path, class: 'nav-link' do %> 商品一覧<% end %><!--商品一覧-->
-                </li>
-                <li class="nav-item btn btn-outline-secondary rounded btn-sm">
-                  <%= link_to admin_customers_path, class: 'nav-link' do %>会員一覧<% end%><!--会員の一覧-->
-                </li>
-                <li class="nav-item btn btn-outline-secondary rounded btn-sm">
-                  <%= link_to admin_root_path, class: 'nav-link' do %>注文履歴一覧<% end %><!--注文履歴の一覧-->
-                </li>
-                <li class="nav-item btn btn-outline-secondary rounded btn-sm">
-                  <%= link_to admin_genres_path, class: 'nav-link' do %>ジャンル一覧<% end %><!-- ジャンルの一覧　-->
-                </li>
-                <li class="nav-item btn btn-outline-secondary rounded btn-sm">
-                  <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link'  do %>ログアウト<% end %>
-                </li>
-
-              <% elsif current_page?(root_path) %>
-                <!--  非ログイン時（管理者）表示メニュー -->
-                <div class="col-md-4">
+                <div class="col-md-">
+                    <div class="row">
+                      <div class="btn-group px-2.5">
+                        <ul class="navbar list-unstyled btn-group">
+                          <li class="nav-item btn btn-outline-secondary rounded btn-sm mr-3 w-20">
+                            <%= link_to admin_items_path, class: 'nav-link' do %> 商品一覧<% end %><!--商品一覧-->
+                          </li>
+                          <li class="nav-item btn btn-outline-secondary rounded btn-sm mr-3 w-20">
+                            <%= link_to admin_customers_path, class: 'nav-link' do %>会員一覧<% end%><!--会員の一覧-->
+                          </li>
+                          <li class="nav-item btn btn-outline-secondary rounded btn-sm mr-3 w-20">
+                            <%= link_to admin_root_path, class: 'nav-link' do %>注文履歴一覧<% end %><!--注文履歴の一覧-->
+                          </li>
+                        <li class="nav-item btn btn-outline-secondary rounded btn-sm mr-3 w-20">
+                          <%= link_to admin_genres_path, class: 'nav-link' do %>ジャンル一覧<% end %><!-- ジャンルの一覧　-->
+                        </li>
+                        <li class="nav-item btn btn-outline-secondary rounded btn-sm w-20">
+                          <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link'  do %>ログアウト<% end %>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
-                  <li class="nav-item btn btn-outline-secondary rounded btn-sm">
-                    <%= link_to about_path, class: 'nav-link' do %>  About  <% end %><!--Aboutページ-->
-                  </li>
-                  <li class="nav-item btn btn-outline-secondary rounded btn-sm">
-                    <%= link_to items_path, class: 'nav-link' do %>商品一覧<% end %><!--会員用の商品一覧-->
-                  </li>
-                  <li class="nav-item btn btn-outline-secondary rounded btn-sm">
-                    <%= link_to new_customer_registration_path, class: 'nav-link' do %> 新規登録 <% end %><!--会員用の新規登録ページへ--->
-                  </li>
-                  <li class="nav-item btn btn-outline-secondary rounded btn-sm">
-                    <%= link_to new_customer_session_path, class: 'nav-link' do %>ログイン<% end %><!--会員のログインページ-->
-                  </li>
 
               <% else %>
-                  <!--　非ログイン時（会員）表示メニュー-->
+                <!--  非ログイン時表示メニュー -->
                 <div class="col-md-4">
                 </div>
-                <li class="nav-item btn btn-outline-secondary rounded btn-sm">
-                  <%= link_to about_path, class: 'nav-link' do %>About<% end %><!--Aboutページ-->
-                </li>
-                <li class="nav-item btn btn-outline-secondary rounded btn-sm">
-                  <%= link_to items_path, class: 'nav-link' do %>商品一覧<% end %><!--会員用の商品一覧-->
-                </li>
-                <li class="nav-item btn btn-outline-secondary rounded btn-sm">
-                  <%= link_to new_customer_registration_path, class: 'nav-link' do %>新規登録<% end %><!--会員用の新規登録ページへ--->
-                </li>
-                <li class="nav-item btn btn-outline-secondary rounded btn-sm">
-                  <%= link_to new_customer_session_path, class: 'nav-link' do %>ログイン<% end %><!--会員のログインページ-->
-                </li>
-              </div>
-              </div>
-            <% end %>
+                <div class="col-md-6">
+                    <div class="row">
+                      <div class="btn-group px-2.5">
+                        <ul class="navbar list-unstyled">
+                          <li class="nav-item btn btn-outline-secondary rounded btn-sm mr-4">
+                            <%= link_to about_path, class: 'nav-link' do %>  About  <% end %><!--Aboutページ-->
+                          </li>
+                          <li class="nav-item btn btn-outline-secondary rounded btn-sm mr-4">
+                            <%= link_to items_path, class: 'nav-link' do %>商品一覧<% end %><!--会員用の商品一覧-->
+                          </li>
+                          <li class="nav-item btn btn-outline-secondary rounded btn-sm mr-4">
+                            <%= link_to new_customer_registration_path, class: 'nav-link' do %> 新規登録 <% end %><!--会員用の新規登録ページへ--->
+                          </li>
+                          <li class="nav-item btn btn-outline-secondary rounded btn-sm">
+                            <%= link_to new_customer_session_path, class: 'nav-link' do %>ログイン<% end %><!--会員のログインページ-->
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+              <% end %>
             </div>
-          </ul>
-
             <!--検索ボックス-->
-          <div class="row">
+            <div class="row">
             <div class="col-md-6 offset-md-6">
               <div class="w-50">
                 <div class="input-group">
                   <input type="text" class="form-control position-relative" placeholder="Search">
-                    <div><button class="btn position-absolute" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
-                    </div>
+                  <div><button class="btn position-absolute" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+            </div>
         </div>
       </nav>
     </header>
@@ -137,5 +132,6 @@
       <%= yield %>
     </main>
 
-  </body>
+    </body>
+  </div>
 </html>

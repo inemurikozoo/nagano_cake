@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
   patch 'customers' => 'public/customers#update', as: 'customer_update'
-  #   #会員用
+
+   #会員用
   devise_for :customers, skip: [:passwords], controllers: {
     registrations: 'public/registrations',
     sessions: 'public/sessions'

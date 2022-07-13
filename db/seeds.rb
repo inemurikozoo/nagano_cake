@@ -5,9 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Admin.create!(
-  email: 'kanrisya@kanrisya.com',
-  password: 'kanrisya'
+Admin.create(
+  email: "a@a",
+  password: "aaaaaa"
 )
 
 Genre.create!(
@@ -105,7 +105,7 @@ Item.create!(
   price: 2000,
   is_active: false
   )
-  
+
 Item.create!(
   genre_id: 1,
   name: "バナナケーキ",
@@ -139,25 +139,24 @@ end
   )
 end
 
-20.times do |n|
+10.times do |n|
   Order.create!(
     customer_id: n + 1,
     postal_code: "123456#{n + 1}",
     address: "東京都渋谷区神南1丁目19-11 パークウェースクエア2 4#{n + 1}階",
     name: "test#{n + 1}",
-    payment_amount: n + 5250,
+    payment_amount: "#{1000 + (n * 1000) + 800}",
     postage: 800,
     pay_type: 0,
-    status: 0
   )
 end
 
-5.times do |n|
+10.times do |n|
   OrderItem.create!(
     item_id: n + 1,
     order_id: n + 1,
     amount: n + 2,
-    price: 1000 + (n * 1000),
+    price: "#{1000 + (n * 1000)}",
     status: 0
   )
 end
