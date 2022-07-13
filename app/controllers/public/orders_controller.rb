@@ -9,7 +9,7 @@ def confirm
     @order = Order.new
     @order.customer_id = current_customer.id
     @order.pay_type = params[:order][:pay_type]
-    @order.postage = 800
+    @order.postage = 800.to_i
     @order.payment_amount = current_customer.cart_items.cart_items_total_price(@cart_items)
     
     #お届け先の情報によって処理の条件分岐
@@ -81,7 +81,7 @@ end
     end
   end
   def index
-    @orders = current_customer.orders
+    @orders = current_customer.orders.all.page(params[:page]).per(6).order('created_at DESC')
     
   end
 
@@ -92,7 +92,7 @@ end
 
 private
   def order_params
-    params.require(:order).permit(:postal_code, :address, :name, :pay_type, :payment_amount)
+    params.require(:order).permit(:postal_code, :address, :name, :pay_type, :payment_amount,:postage)
   end
 
   def address_params

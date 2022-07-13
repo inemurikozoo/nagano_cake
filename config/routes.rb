@@ -39,7 +39,7 @@ patch 'customers/exit' => 'public/customers#exit'
   get 'orders/complete' => 'public/orders#complete', as: 'order_complete'
   post 'orders' => 'public/orders#create'
   get 'orders' => 'public/orders#index'
-  get 'orders/:id' => 'public/orders#show'
+  get 'orders/:id' => 'public/orders#show', as: 'order'
 
   get 'addresses/:id' => 'public/addresses#index', as: 'addresses'
   get 'addresses/:id/edit' => 'public/addresses#edit', as: 'addresses_edit'

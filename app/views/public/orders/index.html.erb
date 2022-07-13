@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-4">
   	    <span style="background-color:#f5f5f5">
-  	  　 注文履歴一覧　
+  	  　 注文履歴一覧
   	    </span>
   	  </div>
   	</div>
@@ -29,22 +29,22 @@
             <%= order.created_at %>
           </td>
           <td class="w-60"><!-- 配送先-->
-            <%= "〒" + order.postal_code %><%= order.address%><br/>
+            <%= "〒" + order.postal_code %><br<%= order.address %><br/>
             <%= order.name %>
           </td>
           <td class="w-20"><!-- 注文商品-->
-            <% order.order_items each do |order_item| %>
-              <%= order_item.item.name %>
+            <% order.order_items.each do |order_item| %>
+              <%= order_item.item.name %><br>
             <% end %>
           </td>
           <td class="w-10"><!-- 支払金額-->
             <%= (order.payment_amount).to_s(:delimited) + "円" %>
           </td>
           <td class="w-20"><!--ステータス -->
-            <%= order.status %>
+            <%= order.status_i18n %>
           </td>
            <td class="w-20"><!--注文詳細 -->
-            <%= link_to "表示する", _items_path(order), method: :delete, class:"btn btn-danger btn-sm" %>
+            <%= link_to "表示する", order_path(order.id), class:"btn btn-primary btn-sm" %>
           <% end %>
           </td>
 
