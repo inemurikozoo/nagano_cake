@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-4">
   	    <span style="background-color:#f5f5f5">
-  	   　注文情報確認　
+  	   　注文情報確認
   	    </span>
   	    <!-- カートにアイテムが存在しているかを判断　-->
       <% if current_customer.cart_items.present? %>
@@ -41,7 +41,7 @@
         <% end %>
       </tbody>
     </table>
-    
+
     <table class="table table-bordered border-dark table-hover px-auto">
       <thead class="thead-light">
         <tr>
@@ -83,7 +83,7 @@
         <%= f.hidden_field :pay_type, value: @order.pay_type %>
         <%= f.hidden_field :payment_amount, value: (total_price(@cart_items) + @order.postage) %>
         <%= f.hidden_field :postage, value: @order.postage %>
-        
+
         <%= f.submit "注文を確定する", class: "btn btn-success col-xs-5" %>
       <% end %>
       </div>

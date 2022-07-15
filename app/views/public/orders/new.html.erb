@@ -1,13 +1,13 @@
 <div class="col-md-11 mx-auto mt-5">
   <h5 class="pb-4">
     <span style="background-color:#f5f5f5">
-      　注文情報入力　
+      　注文情報入力
     </span>
     <!-- カートにアイテムが存在しているかを判断　-->
   <% if current_customer.cart_items.present? %>
   </h5>
     <%= form_with model: @order, url: orders_confirm_path, method: :post, local: true do |f| %>
-      
+
       <strong>支払方法</strong><br />
       <%= f.radio_button :pay_type, Order.pay_types.key(0) %>
 	   	<%= f.label :pay_type, Order.pay_types_i18n[:credit_card] %><br />
@@ -21,13 +21,13 @@
 	   	&emsp;&emsp;<%= "〒" + "#{ current_customer.postal_code} #{current_customer.address}" %><br>
 	   	&emsp;&emsp;<%= "#{ current_customer.last_name} #{current_customer.first_name}" %>
 	   	<% if @address != [] %><br />
-	   	
+
 	   	<!--別途登録した住所 -->
 	   	 <%= f.radio_button :addresses, "shipping_addresses" %>
 	   	 <%= f.label :address, "登録済み住所から選択", {style: "display: inline-block;"} %><br />
       &emsp;&emsp;<%= f.select :address_id, options_from_collection_for_select(Address.all,:id, :address_display) %><br />
-      <% end %>
-      
+      <% end %><br>
+
       <!--新しいお届け先 -->
       <%= f.radio_button :addresses, "new_addresses" %>
 	   	<%= f.label :address, "新しいお届け先", {style: "display: inline-block;"} %><br />
@@ -39,11 +39,11 @@
                   <%= f.text_field :name, placeholder: "令和道子" %><br />
 
       <%= f.submit "確認画面へ進む", class:"btn btn-primary" %>
-      
+
     <% end %>
-    
+
   <% else %>
-  
+
     <!-- カートにアイテムが存在しない場合の処理　-->
       <p>ショッピングカートの中身が空です。</p>
       <p><%= link_to "こちら",items_path %>から商品をカートに追加してください。</p>

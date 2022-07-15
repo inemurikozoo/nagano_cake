@@ -1,7 +1,7 @@
 <div class="container-fluid">
 
 <!--<%= form_for(resource, as: resource_name, url: admin_session_path) do |f| %>-->
-<%= form_with model: Admin.new, url: admin_session_path, method: :post, local: true do |f| 
+<%= form_with model: Admin.new, url: admin_session_path, method: :post, local: true do |f| %>
 
   <div class="col-md-10 mx-auto mt-5">
   <h5 class="head-line pb-4">
@@ -35,7 +35,8 @@
       <%= f.submit "ログイン", class: "btn btn-primary" %>
     </div>
   <% end %>
+  <!--<% end %>-->
   </div>
   <%= render "admin/shared/links" %>
 
-  </div>
+</div>
