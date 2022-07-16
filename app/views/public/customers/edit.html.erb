@@ -1,3 +1,4 @@
+<div class="container">
 <div class="col-md-11 mx-auto mt-5">
   <h5 class="pb-4">
     <span style="background-color:#f5f5f5">
@@ -49,10 +50,14 @@
       <%= f.email_field :email %>
     </div>
   </div>
-  <div class="row">
-      <%= f.submit "編集内容を保存", class:"btn btn-sm btn-success" %>
-    <% end %>
-
-    <%= link_to  "退会する", customers_quit_path, class:'btn btn-sm btn-danger' %>
+  <div class="row pt-4">
+    <div class="p-4">
+        <%= f.submit "編集内容を保存", class:"btn btn-sm btn-success" %>
+      <% end %>
+    </div>
+    <div class="p-4">
+      <%= link_to  "退会する", customers_quit_path, class:'btn btn-sm btn-danger' %>
+    </div>
   </div>
+</div>
 </div>

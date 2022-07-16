@@ -1,4 +1,6 @@
 class Public::CustomersController < ApplicationController
+  before_action :authenticate_customer!
+  
   def show
     @customer = current_customer
   end
@@ -21,9 +23,9 @@ class Public::CustomersController < ApplicationController
   end
 
   def exit
-    @customer = current_customer
-    @customer.is_active = false
-    @customer.update
+    
+    @customer = Customer.find(current_customer.id)
+    @customer.update(is_active: false)
     reset_session
     flash[:notice] = "退会処理が完了しました。またのご利用を心よりお待ちしております。"
     redirect_to root_path

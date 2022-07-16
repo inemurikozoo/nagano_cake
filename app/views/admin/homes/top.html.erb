@@ -18,7 +18,7 @@
         <% @orders.each do |order| %>
           <tr>
             <td class="col-md-3">
-              <%= link_to order.created_at, admin_path(order.customer.id) %>
+              <%= link_to order.created_at, admin_path(order.id) %>
             </td>
             <td class="col-md-3">
               <%= full_name(order.customer) %>

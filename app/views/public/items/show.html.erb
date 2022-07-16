@@ -5,7 +5,7 @@
       <%= render 'genre_sidebar', genres: @genres %>
     </div>
     <div class="col-3">
-        <%= image_tag @item.get_image %>
+        <%= image_tag @item.get_image, size:"200x150" %>
     </div>
     <div class="col-6">
       <h2><strong><%= @item.name %></strong></h2>

@@ -25,7 +25,6 @@ Rails.application.routes.draw do
 
   get 'customers' => 'public/customers#show'
   get 'customers/edit/:id' => 'public/customers#edit', as: 'customer_edit'
-
   get 'customers/quit' => 'public/customers#quit'
 patch 'customers/exit' => 'public/customers#exit'
 
