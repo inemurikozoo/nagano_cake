@@ -1,24 +1,29 @@
-<div class="container pt-4">
+<div class="container pt-5">
   <div class="row">
     <div class="col-3">
       <!--ジャンルサイドバー-->
       <%= render 'genre_sidebar', genres: @genres %>
     </div>
     <div class="col-3">
+      <!--商品の写真-->
         <%= image_tag @item.get_image, size:"200x150" %>
     </div>
     <div class="col-6">
-      <h2><strong><%= @item.name %></strong></h2>
-
-      <p><%= @item.introduction %></p>
-
+      <!--商品名-->
+      <h2 class=pb-5><strong><%= @item.name %></strong></h2>
+      <!--商品の説明-->
+      <p class="pb-5"><%= @item.introduction %></p>
+      <!--商品の価格-->
       <h5><strong>￥<%= @item.price.to_s( :delimited) %></strong><small>（税込）</small></h5>
 
         <%= form_with model: @cart_item, url: cart_items_path, local: true do |f| %>
           <%= f.hidden_field :item_id, :value => @item.id %>
-
-          <%= f.select :amount, (1..10).to_a, include_blank: "個数選択" %>
-          <%= f.submit "カートに入れる", class:"btn btn-success" %>
+          <% if @item.is_active == true %>
+            <%= f.select :amount, (1..10).to_a, include_blank: "個数選択" %>
+            <%= f.submit "カートに入れる", class:"btn btn-success" %>
+          <% else %>
+            <p>こちらの商品は現在販売を休止中です。</p>
+          <% end %>  
         <% end %>
     </div>
   </div>
