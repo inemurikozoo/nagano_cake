@@ -1,0 +1,34 @@
+<h1></h1>
+
+<div class="container pt-4">
+  <div class="row pt-5">
+
+      <div class="col-3">
+        <!--ジャンルサイドバー -->
+        <%= render 'genre_sidebar', genres: @genres %>
+      </div>
+    </span>
+    <div class="col-9">
+      <h2 class="py-4">商品の検索結果</h2>
+
+      <div class="container d-flex flex-wrap justify-content-start">
+        <% @search_item.each do |search_item| %>
+        <div class="w-25 px-3">
+
+          <%= link_to image_tag(search_item.get_image), item_path(search_item.id) %>
+
+            <p><small><strong><%= link_to search_item.name, item_path(search_item.id) %></strong></small></p>
+            <p><small><strong>￥<%= search_item.price.to_s( :delimited) %></small></strong></p>
+
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+
+    <div class="d-flex justify-content-center">
+      <%= paginate @search_item %>
+    </div>
+
+</div>

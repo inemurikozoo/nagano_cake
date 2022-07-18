@@ -1,11 +1,14 @@
               <!--検索ボックス-->
               <div class="row">
                 <div class="col-md-12">
-                  <div class="w-50">
+                  <div class="w-100">
                     <div class="input-group">
-                      <input type="text" class="form-control position-relative" placeholder="商品検索">
-                      <div><button class="btn position-absolute" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
-                      </div>
+                      <form action="search" method="post" name="search_item" id="search_item">
+                        <input type="text" name="search_item" class="form-control position-relative rounded-pill" placeholder="Search" form="search_item">
+                        <button class="btn position-absolute" type="submit" form="search_item"><i class="fas fa-search"></i></button>
+                      </form>
+
+
                     </div>
                   </div>
                 </div>

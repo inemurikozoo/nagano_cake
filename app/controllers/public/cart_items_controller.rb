@@ -31,7 +31,7 @@ class Public::CartItemsController < ApplicationController
   #カートに商品を追加・保存
   def create
     if params[:cart_item][:amount] == ""
-      redirect_to , notice: '数量を入力してください。'
+      redirect_to request.referer, notice: '個数を入力してください。'
     else
         @cart_item = CartItem.new(cart_item_params)
         @cart_item.customer_id = current_customer.id

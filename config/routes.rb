@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
   patch 'customers' => 'public/customers#update', as: 'customer_update'
 
+  #検索ボックスからの検索
+  get 'items/search' => 'public/items#search', as: 'search'
+
    #会員用
   devise_for :customers, skip: [:passwords], controllers: {
     registrations: 'public/registrations',

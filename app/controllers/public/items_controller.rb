@@ -9,4 +9,9 @@ class Public::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @cart_item = CartItem.new
   end
+  
+  def search
+    @genres = Genre.all
+    @items = Item.search(params[:search])
+  end
 end
