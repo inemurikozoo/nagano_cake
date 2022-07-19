@@ -14,7 +14,8 @@ class Public::AddressesController < ApplicationController
     if @address.save
       redirect_to addresses_path(@address.id), notice: "配送先を登録しました"
     else
-      render index, alert: "配送先の登録に失敗しました"
+      render :index
+      flash[:alert] = "配送先の登録に失敗しました"
     end
   end
 
