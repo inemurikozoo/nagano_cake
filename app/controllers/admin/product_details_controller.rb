@@ -4,7 +4,7 @@ class Admin::ProductDetailsController < ApplicationController
     if @order_item.update(order_item_params)
       @order = Order.find_by(id: @order_item.order_id )
       all_complete?(@order)
-      any_producting?(@order_item)
+      any_producting?(@order)
       redirect_to admin_path(@order_item.order), notice: "製作ステータスを更新しました"
     else
       render 'orders/show', alert: "製作ステータスを更新できませんでした"
@@ -13,22 +13,22 @@ class Admin::ProductDetailsController < ApplicationController
 
   # 製作ステータスをすべて「製作完了」にしたとき、注文ステータスを「発送準備中」にする
   def all_complete?(order)
-    binding.pry
+
     if order.order_items.all? do |order_item|
       order_item.status == "complete"
       end
-      order_item.update(order_status: "ready_to_ship")
-      flash[:notice] = "注文ステータスが「発送準備中」に更新されました"
+      order.update(status: "ready_to_ship")
+      flash[:success] = "注文ステータスが「発送準備中」に更新されました"
     end
   end
 
   # 製作ステータスが1つでも「製作中」になったとき、注文ステータスを「製作中」にする
-  def any_producting?(order_item)
-    if order_item.any? do |order_item|
+  def any_producting?(order)
+    if order.order_items.any? do |order_item|
       order_item.status == "producting"
       end
-      order_item.order.update(status: "producting")
-      flash[:notice] = "注文ステータスが「製作中」に更新されました"
+      order.update(status: "producting")
+      flash[:success] = "注文ステータスが「製作中」に更新されました"
     end
   end
 

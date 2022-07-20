@@ -1,6 +1,6 @@
 class Admin::OrdersController < ApplicationController
 
-  
+
   def show
     @order = Order.find(params[:id])
     @order_items = @order.order_items
@@ -23,13 +23,13 @@ class Admin::OrdersController < ApplicationController
       order.order_items.each do |order_item|
         order_item.update(status: "waiting")
       end
-      flash[:notice] = "製作ステータスが「製作待ち」に更新されました"
+      flash[:success] = "製作ステータスが「製作待ち」に更新されました"
     end
   end
 
-  
+
   private
-  
+
   def order_params
     params.require(:order).permit(:status)
   end
